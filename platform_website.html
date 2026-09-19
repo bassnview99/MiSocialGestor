@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialManager AI | Automatización, Monitoreo & Producción de Contenido</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Chart.js for Interactive Dashboard Preview -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                            accent: '#6366f1',
+                            emerald: '#10b981'
+                        },
+                        dark: {
+                            bg: '#0b0f17',
+                            card: '#111827',
+                            border: '#1f2937',
+                            muted: '#374151'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f17;
+            color: #f3f4f6;
+        }
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.2);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #111827;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #374151;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #4b5563;
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-gray-100 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-brand-500/20">
+                    <i data-lucide="cpu" class="w-6 h-6 text-white"></i>
+                </div>
+                <span class="font-bold text-xl tracking-tight text-white">Social<span class="gradient-text">Pulse</span></span>
+                <span class="text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-0.5 rounded-full font-medium ml-2 hidden sm:inline-block">100% Legítimo</span>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="#transparencia" class="hover:text-white transition-colors">Garantía Legítima</a>
+                <a href="#funciones" class="hover:text-white transition-colors">Funcionalidades</a>
+                <a href="#demo" class="hover:text-white transition-colors">Demo Interactiva</a>
+                <a href="#planes" class="hover:text-white transition-colors">Planes & Cotizador</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="#cotizador" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-brand-600 hover:bg-brand-700 rounded-lg transition-all shadow-md shadow-brand-600/30">
+                    Cotizar Ahora
+                </a>
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-400 hover:text-white">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-card border-b border-gray-800 px-4 py-4 space-y-3">
+            <a href="#transparencia" class="block text-gray-300 hover:text-white py-1">Garantía Legítima</a>
+            <a href="#funciones" class="block text-gray-300 hover:text-white py-1">Funcionalidades</a>
+            <a href="#demo" class="block text-gray-300 hover:text-white py-1">Demo Interactiva</a>
+            <a href="#planes" class="block text-gray-300 hover:text-white py-1">Planes & Cotizador</a>
+            <a href="#cotizador" class="block text-center w-full py-2.5 bg-brand-600 text-white rounded-lg font-medium">Cotizar Ahora</a>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative min-h-[90vh] flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+            <!-- Background Glow Effects -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-600/15 rounded-full blur-[120px] pointer-events-none"></div>
+            <div class="absolute top-1/3 right-10 w-[300px] h-[300px] bg-purple-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+            <div class="max-w-5xl mx-auto text-center relative z-10 space-y-8">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel border border-brand-500/30 text-brand-100 text-sm font-medium animate-pulse">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-brand-500"></i>
+                    <span>Optimizado para Instagram, YouTube & TikTok</span>
+                </div>
+
+                <!-- Main Heading -->
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight">
+                    Tu Social Manager Digital <br class="hidden sm:inline"/>
+                    <span class="gradient-text">sin pagar sueldos desorbitados</span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="max-w-3xl mx-auto text-lg sm:text-xl text-gray-300 leading-relaxed font-normal">
+                    Mantenemos a tu público conectado, automatizamos tus procesos operativos, monitoreamos competidores y producimos contenido audiovisual de alto impacto. <strong class="text-white font-semibold">100% legítimo y seguro para tus cuentas.</strong>
+                </p>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                    <a href="#planes" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-brand-600/30 flex items-center justify-center gap-2">
+                        <span>Ver Planes Comerciales</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#demo" class="w-full sm:w-auto px-8 py-4 glass-panel hover:bg-gray-800/80 text-gray-200 font-semibold rounded-xl border border-gray-700 transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="play-circle" class="w-5 h-5 text-brand-500"></i>
+                        <span>Probar Demo Interactiva</span>
+                    </a>
+                </div>
+
+                <!-- Stats / Platform icons -->
+                <div class="pt-12 border-t border-gray-800/80 grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-gray-400">
+                    <div>
+                        <div class="text-2xl font-bold text-white">0% Riesgo</div>
+                        <div class="text-xs text-gray-400 mt-1">Cumplimiento Estricto TOS</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-white">24 / 7</div>
+                        <div class="text-xs text-gray-400 mt-1">Monitoreo & Respuestas</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-white">+40 Videos/Mes</div>
+                        <div class="text-xs text-gray-400 mt-1">Capacidad de Producción</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-white">100% Real</div>
+                        <div class="text-xs text-gray-400 mt-1">Audiencia y Métricas Orgánicas</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transparencia & Cumplimiento Section -->
+        <section id="transparencia" class="py-20 px-4 sm:px-6 lg:px-8 bg-dark-card/50 border-y border-gray-800">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Compromiso Ético & Legal</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white">Operación 100% Legítima y Segura</h2>
+                    <p class="text-gray-400">Transformamos estaciones de trabajo tecnológicas en motores de producción real. Cero granjas de clics, cero seguidores bots.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Column 1: Lo que SÍ hacemos -->
+                    <div class="glass-panel p-8 rounded-2xl border-l-4 border-l-emerald-500 relative overflow-hidden">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="p-3 bg-emerald-500/10 text-emerald-400 rounded-xl">
+                                <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Nuestra Metodología Legítima</h3>
+                        </div>
+                        <ul class="space-y-4 text-gray-300 text-sm">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"></i>
+                                <span><strong>Producción Audiovisual Real:</strong> Edición, guion e imágenes creadas con licencias o material original.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"></i>
+                                <span><strong>Publicación Oficial:</strong> Integración mediante herramientas autorizadas sin vulnerar políticas.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"></i>
+                                <span><strong>Monitoreo Público Transparente:</strong> Seguimiento de precios y stock web con tecnologías de scraping ético.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"></i>
+                                <span><strong>Atención Automatizada Permitida:</strong> Chatbots y auto-respuestas para consultas reales de clientes.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 2: Lo que NO hacemos (Política de Protección) -->
+                    <div class="glass-panel p-8 rounded-2xl border-l-4 border-l-red-500 relative overflow-hidden">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="p-3 bg-red-500/10 text-red-400 rounded-xl">
+                                <i data-lucide="shield-alert" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Lo que NO hacemos (Cero Riesgo)</h3>
+                        </div>
+                        <ul class="space-y-4 text-gray-400 text-sm">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x" class="w-5 h-5 text-red-400 shrink-0 mt-0.5"></i>
+                                <span><strong>NO vendemos interacciones falsas:</strong> Cero reproducción artificial, reproducciones compradas o "likes" simulados.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x" class="w-5 h-5 text-red-400 shrink-0 mt-0.5"></i>
+                                <span><strong>NO evadimos bloqueos:</strong> No utilizamos teléfonos para engañar algoritmos ni crear cuentas falsas masivas.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x" class="w-5 h-5 text-red-400 shrink-0 mt-0.5"></i>
+                                <span><strong>NO prometemos métricas infladas:</strong> Promovemos retención y conversión comercial real para tu negocio.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x" class="w-5 h-5 text-red-400 shrink-0 mt-0.5"></i>
+                                <span><strong>NO infringimos derechos:</strong> Todo el contenido de audio e imagen se somete a estricto control de derechos.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Grid Section -->
+        <section id="funciones" class="py-24 px-4 sm:px-6 lg:px-8 relative">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Ecosistema Completo</span>
+                    <h2 class="text-3xl sm:text-5xl font-bold text-white">Todas las herramientas que necesitas</h2>
+                    <p class="text-gray-400">Simplifica tu flujo de trabajo de creación de contenido, ecommerce y gestión con nuestros módulos automatizados.</p>
+                </div>
+
+                <!-- Features Categories Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Monitoreo -->
+                    <div class="glass-card p-8 rounded-2xl relative group">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="eye" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Monitoreo Inteligente</h3>
+                        <p class="text-gray-400 text-sm mb-4">Supervisa el mercado y tu competencia en tiempo real de forma automática.</p>
+                        <ul class="space-y-2 text-sm text-gray-300">
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-500"></i> Precios de competidores</li>
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-500"></i> Stock de productos e Inventory alerts</li>
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-500"></i> Cambios en páginas web relevantes</li>
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-500"></i> Rastreo de ofertas y nuevos lanzamientos</li>
+                        </ul>
+                    </div>
+
+                    <!-- Automatización -->
+                    <div class="glass-card p-8 rounded-2xl relative group">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="zap" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Automatizaciones</h3>
+                        <p class="text-gray-400 text-sm mb-4">Libérate de tareas repetitivas y conecta tus herramientas operativas.</p>
+                        <ul class="space-y-2 text-sm text-gray-300">
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-indigo-400"></i> Respuestas automáticas directas</li>
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-indigo-400"></i> Clasificación y ruteo de leads</li>
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-indigo-400"></i> Notificaciones y alertas instantáneas</li>
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-indigo-400"></i> Sincronización con Google Sheets / CRM</li>
+                        </ul>
+                    </div>
+
+                    <!-- Inteligencia Artificial -->
+                    <div class="glass-card p-8 rounded-2xl relative group">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="bot" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Modelos de IA</h3>
+                        <p class="text-gray-400 text-sm mb-4">Asistentes internos entrenados con la información de tu marca o tienda.</p>
+                        <ul class="space-y-2 text-sm text-gray-300">
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-purple-400"></i> Clasificación automática de mensajes</li>
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-purple-400"></i> Generación de borradores de respuestas</li>
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-purple-400"></i> Extracción y resumen de documentos</li>
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-purple-400"></i> Copys atractivos para redes</li>
+                        </ul>
+                    </div>
+
+                    <!-- Producción & Distribución -->
+                    <div class="glass-card p-8 rounded-2xl relative group">
+                        <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="video" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Producción & Contenido</h3>
+                        <p class="text-gray-400 text-sm mb-4">Contenido audiovisual adaptado a formatos verticales de alta retención.</p>
+                        <ul class="space-y-2 text-sm text-gray-300">
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-pink-400"></i> Edición vertical (Reels / Shorts / TikTok)</li>
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-pink-400"></i> Subtitulado dinámico y miniaturas</li>
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-pink-400"></i> Videos UGC para campañas con marcas</li>
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-pink-400"></i> Programación directa y calendario visual</li>
+                        </ul>
+                    </div>
+
+                    <!-- Testing & Disponibilidad -->
+                    <div class="glass-card p-8 rounded-2xl relative group">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="activity" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Testing & Uptime</h3>
+                        <p class="text-gray-400 text-sm mb-4">Asegura que tus canales de venta y APIs funcionen sin interrupciones.</p>
+                        <ul class="space-y-2 text-sm text-gray-300">
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-emerald-400"></i> Monitorización de disponibilidad 24/7</li>
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-emerald-400"></i> Pruebas automatizadas de APIs e integración</li>
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-emerald-400"></i> Pruebas de carga controladas en tu sitio</li>
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-emerald-400"></i> Alertas por caídas de e-commerce</li>
+                        </ul>
+                    </div>
+
+                    <!-- Analítica & Métricas -->
+                    <div class="glass-card p-8 rounded-2xl relative group">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Métricas Reales</h3>
+                        <p class="text-gray-400 text-sm mb-4">Análisis exhaustivo de conversiones comerciales y retención de audiencia.</p>
+                        <ul class="space-y-2 text-sm text-gray-300">
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-amber-400"></i> Análisis de retención de video</li>
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-amber-400"></i> Atribución de ventas y leads</li>
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-amber-400"></i> Reportes semanales y mensuales</li>
+                            <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-amber-400"></i> Detección de tendencias de audiencia</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Dashboard Demo Section -->
+        <section id="demo" class="py-20 px-4 sm:px-6 lg:px-8 bg-dark-card/30 border-y border-gray-800">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+                    <span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Demostración en Vivo</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white">Explora el Panel de Control</h2>
+                    <p class="text-gray-400">Interactúa con nuestro simulador para ver cómo centralizarás el monitoreo, la automatización de chats y la programación de contenidos.</p>
+                </div>
+
+                <!-- Dashboard Outer Frame -->
+                <div class="glass-panel rounded-2xl border border-gray-700 overflow-hidden shadow-2xl">
+                    <!-- Dashboard Header Nav -->
+                    <div class="bg-gray-900 px-6 py-4 border-b border-gray-800 flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex items-center gap-3">
+                            <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
+                            <span class="ml-4 text-xs font-mono text-gray-400">socialpulse-console // demo-mode</span>
+                        </div>
+
+                        <!-- Tab buttons -->
+                        <div class="flex items-center gap-2 bg-dark-bg p-1 rounded-xl border border-gray-800">
+                            <button onclick="switchTab('tab-competencia')" id="btn-tab-competencia" class="px-4 py-1.5 rounded-lg text-xs font-medium text-white bg-brand-600 transition-all flex items-center gap-2">
+                                <i data-lucide="trending-up" class="w-3.5 h-3.5"></i> Monitoreo Competencia
+                            </button>
+                            <button onclick="switchTab('tab-chat')" id="btn-tab-chat" class="px-4 py-1.5 rounded-lg text-xs font-medium text-gray-400 hover:text-white transition-all flex items-center gap-2">
+                                <i data-lucide="message-square" class="w-3.5 h-3.5"></i> Respuestas IA & Chat
+                            </button>
+                            <button onclick="switchTab('tab-calendario')" id="btn-tab-calendario" class="px-4 py-1.5 rounded-lg text-xs font-medium text-gray-400 hover:text-white transition-all flex items-center gap-2">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5"></i> Calendario Contenido
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Body -->
+                    <div class="p-6 sm:p-8 min-h-[450px]">
+                        
+                        <!-- TAB 1: Monitoreo Competencia -->
+                        <div id="tab-competencia" class="space-y-6">
+                            <div class="grid lg:grid-cols-3 gap-6">
+                                <div class="lg:col-span-2 glass-panel p-5 rounded-xl border border-gray-800">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <h4 class="font-bold text-white text-sm">Histórico de Precios - Producto Top Competidores</h4>
+                                        <span class="text-xs text-emerald-400 flex items-center gap-1"><i data-lucide="refresh-cw" class="w-3 h-3 animate-spin"></i> Actualizado hace 5 min</span>
+                                    </div>
+                                    <div class="h-64 relative">
+                                        <canvas id="competitorChart"></canvas>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-4">
+                                    <h4 class="font-bold text-white text-sm mb-2">Alertas de Stock & Precios</h4>
+                                    
+                                    <div class="p-3.5 rounded-xl bg-gray-900/80 border border-amber-500/30 flex items-start gap-3">
+                                        <i data-lucide="alert-circle" class="w-5 h-5 text-amber-400 shrink-0 mt-0.5"></i>
+                                        <div>
+                                            <p class="text-xs font-semibold text-white">Bajada de Precio Detectada</p>
+                                            <p class="text-xs text-gray-400 mt-0.5">TiendaRival.cl bajó "Micrófono USB Pro" de $89.900 a $74.900 CLP.</p>
+                                            <span class="text-[10px] text-gray-500">Hoy, 10:42 AM</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="p-3.5 rounded-xl bg-gray-900/80 border border-red-500/30 flex items-start gap-3">
+                                        <i data-lucide="package-x" class="w-5 h-5 text-red-400 shrink-0 mt-0.5"></i>
+                                        <div>
+                                            <p class="text-xs font-semibold text-white">Quiebre de Stock en Competencia</p>
+                                            <p class="text-xs text-gray-400 mt-0.5">Competidor B agotó "Soporte de Brazo". Oportunidad de pauta.</p>
+                                            <span class="text-[10px] text-gray-500">Ayer, 18:15 PM</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="p-3.5 rounded-xl bg-gray-900/80 border border-emerald-500/30 flex items-start gap-3">
+                                        <i data-lucide="arrow-up-right" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"></i>
+                                        <div>
+                                            <p class="text-xs font-semibold text-white">Nueva Publicación Detectada</p>
+                                            <p class="text-xs text-gray-400 mt-0.5">Nuevo Reel publicado con +12k impresiones orgánicas.</p>
+                                            <span class="text-[10px] text-gray-500">Hace 2 horas</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TAB 2: Respuestas IA -->
+                        <div id="tab-chat" class="hidden">
+                            <div class="grid md:grid-cols-3 gap-6">
+                                <!-- Chat inbox preview -->
+                                <div class="glass-panel rounded-xl p-4 border border-gray-800 space-y-3">
+                                    <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Conversaciones Entrantes</span>
+                                    <div class="space-y-2">
+                                        <div class="p-3 rounded-lg bg-brand-600/20 border border-brand-500/30 flex items-center gap-3 cursor-pointer">
+                                            <div class="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center font-bold text-xs text-purple-300">CL</div>
+                                            <div class="overflow-hidden">
+                                                <p class="text-xs font-bold text-white truncate">@camila_store</p>
+                                                <p class="text-[11px] text-gray-300 truncate">¿Tienen envío a Concepción?</p>
+                                            </div>
+                                        </div>
+                                        <div class="p-3 rounded-lg bg-gray-900/50 border border-gray-800 flex items-center gap-3 opacity-60">
+                                            <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center font-bold text-xs text-blue-300">MR</div>
+                                            <div class="overflow-hidden">
+                                                <p class="text-xs font-bold text-white truncate">@mario_tech</p>
+                                                <p class="text-[11px] text-gray-400 truncate">Precio del plan Pro por favor</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Live Interactive Chat Simulator -->
+                                <div class="md:col-span-2 glass-panel rounded-xl border border-gray-800 flex flex-col justify-between h-[360px]">
+                                    <div class="p-3 border-b border-gray-800 flex items-center justify-between bg-gray-900/40">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                                            <span class="text-xs font-bold text-white">Bot Asistente IA Activo</span>
+                                        </div>
+                                        <span class="text-[10px] text-gray-400 bg-gray-800 px-2 py-0.5 rounded">Modelo: GPT-4o Custom</span>
+                                    </div>
+
+                                    <!-- Chat Messages Stream -->
+                                    <div id="chat-messages" class="p-4 space-y-3 overflow-y-auto custom-scrollbar flex-1 text-xs">
+                                        <div class="flex justify-start">
+                                            <div class="bg-gray-800 text-gray-200 p-3 rounded-xl max-w-[80%]">
+                                                ¡Hola! 👋 Vi su video de los planes. ¿Tienen envíos a Concepción y cuánto tarda el Plan Start?
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-end">
+                                            <div class="bg-brand-600 text-white p-3 rounded-xl max-w-[80%] space-y-1">
+                                                <p>¡Hola Camila! 🚀 Sí, atendemos a todo Chile. El servicio de automatización y producción se activa en menos de 24 horas hábiles.</p>
+                                                <span class="text-[9px] text-brand-200 block text-right">Generado por IA • Hace un instante</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Chat Input Simulation -->
+                                    <div class="p-3 border-t border-gray-800 flex gap-2">
+                                        <input type="text" id="sim-chat-input" placeholder="Prueba escribir una pregunta (ej: ¿Cuál es el precio?)..." class="flex-1 bg-dark-bg border border-gray-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-500">
+                                        <button onclick="sendSimulatedChat()" class="px-3 py-2 bg-brand-600 hover:bg-brand-500 text-white rounded-lg text-xs font-medium">Enviar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TAB 3: Programación / Calendario -->
+                        <div id="tab-calendario" class="hidden">
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="font-bold text-white text-sm">Contenido Programado - Septiembre 2026</h4>
+                                    <span class="text-xs bg-brand-600/20 text-brand-300 border border-brand-500/30 px-3 py-1 rounded-full">24 de 24 Videos Programados</span>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                                    <!-- Card Video 1 -->
+                                    <div class="glass-panel p-3 rounded-xl border border-gray-800 space-y-2">
+                                        <div class="relative rounded-lg overflow-hidden h-28 bg-gray-800 flex items-center justify-center">
+                                            <span class="text-xs text-gray-400 font-mono">Shorts / Reel #01</span>
+                                            <span class="absolute top-2 right-2 bg-emerald-500/80 text-white text-[10px] px-1.5 py-0.5 rounded font-bold">Listos</span>
+                                        </div>
+                                        <p class="text-xs font-bold text-white truncate">3 Tips para automatizar tu e-commerce</p>
+                                        <div class="flex justify-between items-center text-[10px] text-gray-400">
+                                            <span>📅 Lunes 18:00</span>
+                                            <span class="text-indigo-400 font-semibold">Instagram & TikTok</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Card Video 2 -->
+                                    <div class="glass-panel p-3 rounded-xl border border-gray-800 space-y-2">
+                                        <div class="relative rounded-lg overflow-hidden h-28 bg-gray-800 flex items-center justify-center">
+                                            <span class="text-xs text-gray-400 font-mono">UGC Campaign #02</span>
+                                            <span class="absolute top-2 right-2 bg-emerald-500/80 text-white text-[10px] px-1.5 py-0.5 rounded font-bold">Listos</span>
+                                        </div>
+                                        <p class="text-xs font-bold text-white truncate">Unboxing Producto Estrella en Chile</p>
+                                        <div class="flex justify-between items-center text-[10px] text-gray-400">
+                                            <span>📅 Miércoles 12:30</span>
+                                            <span class="text-red-400 font-semibold">YouTube Shorts</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Card Video 3 -->
+                                    <div class="glass-panel p-3 rounded-xl border border-gray-800 space-y-2">
+                                        <div class="relative rounded-lg overflow-hidden h-28 bg-gray-800 flex items-center justify-center">
+                                            <span class="text-xs text-gray-400 font-mono">Tutorial #03</span>
+                                            <span class="absolute top-2 right-2 bg-amber-500/80 text-white text-[10px] px-1.5 py-0.5 rounded font-bold">En Edición</span>
+                                        </div>
+                                        <p class="text-xs font-bold text-white truncate">Cómo comparar precios de la competencia</p>
+                                        <div class="flex justify-between items-center text-[10px] text-gray-400">
+                                            <span>📅 Viernes 20:00</span>
+                                            <span class="text-pink-400 font-semibold">Instagram Reel</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Card Video 4 -->
+                                    <div class="glass-panel p-3 rounded-xl border border-gray-800 space-y-2">
+                                        <div class="relative rounded-lg overflow-hidden h-28 bg-gray-800 flex items-center justify-center">
+                                            <span class="text-xs text-gray-400 font-mono">Promo #04</span>
+                                            <span class="absolute top-2 right-2 bg-blue-500/80 text-white text-[10px] px-1.5 py-0.5 rounded font-bold">Programado</span>
+                                        </div>
+                                        <p class="text-xs font-bold text-white truncate">Descuento exclusivo fin de mes</p>
+                                        <div class="flex justify-between items-center text-[10px] text-gray-400">
+                                            <span>📅 Domingo 15:00</span>
+                                            <span class="text-indigo-400 font-semibold">Multicanal</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Plans Section -->
+        <section id="planes" class="py-24 px-4 sm:px-6 lg:px-8 relative">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Planes Transparentes</span>
+                    <h2 class="text-3xl sm:text-5xl font-bold text-white">Suscripciones Mensuales en CLP</h2>
+                    <p class="text-gray-400">Elige la escala de producción y monitoreo que necesita tu marca o negocio. Sin contratos forzosos.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 items-stretch">
+                    
+                    <!-- PLAN START -->
+                    <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between relative border border-gray-800 hover:border-gray-700 transition-all">
+                        <div class="space-y-6">
+                            <div>
+                                <span class="text-xs font-bold text-brand-400 uppercase tracking-widest">Para Creadores Iniciales</span>
+                                <h3 class="text-2xl font-bold text-white mt-1">Plan START</h3>
+                                <p class="text-gray-400 text-xs mt-2">Mantiene tus redes activas con contenido constante y atención básica.</p>
+                            </div>
+
+                            <div class="border-y border-gray-800 py-4">
+                                <div class="text-3xl sm:text-4xl font-extrabold text-white">$199.000 <span class="text-sm font-normal text-gray-400">CLP / mes</span></div>
+                            </div>
+
+                            <ul class="space-y-3 text-sm text-gray-300">
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> <strong>12 Videos</strong> verticales originales</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Edición básica + Subtítulos</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Calendario de publicación programado</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Atención y respuestas automáticas básicas</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Monitoreo esencial (1 competidor/sitio)</li>
+                            </ul>
+                        </div>
+
+                        <a href="#cotizador" onclick="selectPlan('Plan START', 199000)" class="mt-8 w-full py-3.5 px-4 rounded-xl font-semibold text-center text-white bg-gray-800 hover:bg-gray-700 transition-all border border-gray-700 block">
+                            Seleccionar Plan START
+                        </a>
+                    </div>
+
+                    <!-- PLAN PRO (MÁS POPULAR) -->
+                    <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between relative border-2 border-brand-500 shadow-xl shadow-brand-500/10 scale-105 z-10">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-600 to-indigo-600 text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full shadow-md">
+                            🔥 Más Popular
+                        </div>
+
+                        <div class="space-y-6">
+                            <div>
+                                <span class="text-xs font-bold text-brand-400 uppercase tracking-widest">Para Crecimiento Acelerado</span>
+                                <h3 class="text-2xl font-bold text-white mt-1">Plan PRO</h3>
+                                <p class="text-gray-400 text-xs mt-2">Frecuencia perfecta de producción y monitoreo de precios competitivo.</p>
+                            </div>
+
+                            <div class="border-y border-gray-800 py-4">
+                                <div class="text-3xl sm:text-4xl font-extrabold text-white">$349.000 <span class="text-sm font-normal text-gray-400">CLP / mes</span></div>
+                            </div>
+
+                            <ul class="space-y-3 text-sm text-gray-300">
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-400"></i> <strong>24 Videos</strong> verticales / mes</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-400"></i> Edición avanzada + cortes + miniaturas</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-400"></i> Publicación multicanal programada</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-400"></i> Reporte mensual de métricas e impresiones</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-400"></i> Automatización de respuestas & Leads</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-400"></i> Monitoreo de precios e inventarios de rivales</li>
+                            </ul>
+                        </div>
+
+                        <a href="#cotizador" onclick="selectPlan('Plan PRO', 349000)" class="mt-8 w-full py-3.5 px-4 rounded-xl font-semibold text-center text-white bg-brand-600 hover:bg-brand-500 transition-all shadow-lg shadow-brand-600/30 block">
+                            Seleccionar Plan PRO
+                        </a>
+                    </div>
+
+                    <!-- PLAN STUDIO -->
+                    <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between relative border border-gray-800 hover:border-gray-700 transition-all">
+                        <div class="space-y-6">
+                            <div>
+                                <span class="text-xs font-bold text-purple-400 uppercase tracking-widest">Para Marcas & Ecommerce</span>
+                                <h3 class="text-2xl font-bold text-white mt-1">Plan STUDIO</h3>
+                                <p class="text-gray-400 text-xs mt-2">Producción masiva con videos UGC, asistentes IA y testing técnico.</p>
+                            </div>
+
+                            <div class="border-y border-gray-800 py-4">
+                                <div class="text-3xl sm:text-4xl font-extrabold text-white">$599.000 <span class="text-sm font-normal text-gray-400">CLP / mes</span></div>
+                            </div>
+
+                            <ul class="space-y-3 text-sm text-gray-300">
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> <strong>40 Videos</strong> + Contenido UGC para marcas</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> Edición premium + locuciones / sonido</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> Distribución multicanal completa</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> Analítica de atribución y retención de audiencias</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> Asistente IA interno entrenado con tus datos</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> Pruebas de APIs & Monitoreo técnico completo</li>
+                                <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> Reuniones de estrategia mensuales</li>
+                            </ul>
+                        </div>
+
+                        <a href="#cotizador" onclick="selectPlan('Plan STUDIO', 599000)" class="mt-8 w-full py-3.5 px-4 rounded-xl font-semibold text-center text-white bg-gray-800 hover:bg-gray-700 transition-all border border-gray-700 block">
+                            Seleccionar Plan STUDIO
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Quotation & Calculator Section -->
+        <section id="cotizador" class="py-20 px-4 sm:px-6 lg:px-8 bg-dark-card/40 border-t border-gray-800">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12 space-y-3">
+                    <span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Calculadora a la Medida</span>
+                    <h2 class="text-3xl font-bold text-white">Personaliza tu Presupuesto Estimado</h2>
+                    <p class="text-gray-400">Ajusta las variables de videos y servicios de monitoreo para ver el costo mensual en pesos chilenos.</p>
+                </div>
+
+                <div class="glass-panel p-8 sm:p-10 rounded-2xl border border-gray-800 grid md:grid-cols-12 gap-8">
+                    <!-- Controls Column -->
+                    <div class="md:col-span-7 space-y-6">
+                        
+                        <!-- Slider: Number of Videos -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <label class="font-medium text-gray-200">Videos Verticales Mensuales:</label>
+                                <span id="calc-video-count" class="font-bold text-brand-400">20 videos</span>
+                            </div>
+                            <input type="range" id="slider-videos" min="8" max="60" step="4" value="20" class="w-full accent-brand-500 bg-gray-800 rounded-lg cursor-pointer">
+                            <div class="flex justify-between text-[11px] text-gray-500 font-mono">
+                                <span>8 videos</span>
+                                <span>24 videos</span>
+                                <span>60+ videos</span>
+                            </div>
+                        </div>
+
+                        <!-- Addon Checkboxes -->
+                        <div class="space-y-3 pt-2">
+                            <label class="font-medium text-gray-200 text-sm block">Módulos Adicionales:</label>
+
+                            <label class="flex items-center justify-between p-3 rounded-xl bg-gray-900/60 border border-gray-800 cursor-pointer hover:border-gray-700">
+                                <div class="flex items-center gap-3">
+                                    <input type="checkbox" id="addon-ugc" onchange="calculateCustomPrice()" class="w-4 h-4 accent-brand-500 rounded">
+                                    <span class="text-xs font-medium text-gray-300">Añadir Piezas de Video UGC (+ $45.000 / pieza)</span>
+                                </div>
+                            </label>
+
+                            <label class="flex items-center justify-between p-3 rounded-xl bg-gray-900/60 border border-gray-800 cursor-pointer hover:border-gray-700">
+                                <div class="flex items-center gap-3">
+                                    <input type="checkbox" id="addon-crm" onchange="calculateCustomPrice()" class="w-4 h-4 accent-brand-500 rounded">
+                                    <span class="text-xs font-medium text-gray-300">Integración CRM / Google Sheets Automático (+ $30.000)</span>
+                                </div>
+                            </label>
+
+                            <label class="flex items-center justify-between p-3 rounded-xl bg-gray-900/60 border border-gray-800 cursor-pointer hover:border-gray-700">
+                                <div class="flex items-center gap-3">
+                                    <input type="checkbox" id="addon-monitoring" onchange="calculateCustomPrice()" class="w-4 h-4 accent-brand-500 rounded">
+                                    <span class="text-xs font-medium text-gray-300">Monitoreo Avanzado de Precios & Uptime (+ $50.000)</span>
+                                </div>
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <!-- Result Summary Column -->
+                    <div class="md:col-span-5 glass-panel p-6 rounded-xl border border-brand-500/30 flex flex-col justify-between text-center bg-brand-900/10">
+                        <div class="space-y-4">
+                            <span class="text-xs font-bold text-brand-400 uppercase tracking-widest">Presupuesto Estimado</span>
+                            <div id="calc-total" class="text-3xl sm:text-4xl font-extrabold text-white">$290.000</div>
+                            <span class="text-xs text-gray-400 block">mensuales en Pesos Chilenos (CLP)</span>
+                            
+                            <div class="text-left text-xs text-gray-400 space-y-1 pt-4 border-t border-gray-800">
+                                <p class="flex justify-between"><span>Base Videos:</span> <strong id="summary-video-price" class="text-gray-200">$210.000</strong></p>
+                                <p class="flex justify-between"><span>Adicionales:</span> <strong id="summary-addons-price" class="text-gray-200">$80.000</strong></p>
+                            </div>
+                        </div>
+
+                        <a href="#contacto" class="mt-6 w-full py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-lg text-sm transition-all shadow-md block text-center">
+                            Solicitar Cotización Oficial
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section id="contacto" class="py-24 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-12 space-y-3">
+                    <span class="text-brand-500 font-semibold text-sm uppercase tracking-wider">Hablemos de tu Proyecto</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white">Solicita una Demo o Contrata un Plan</h2>
+                    <p class="text-gray-400">Déjanos tus datos y un especialista revisará tus canales de Instagram, YouTube o TikTok sin costo.</p>
+                </div>
+
+                <form id="contact-form" onsubmit="handleFormSubmit(event)" class="glass-panel p-8 sm:p-10 rounded-2xl border border-gray-800 space-y-6">
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-medium text-gray-300 mb-2">Nombre completo</label>
+                            <input type="text" required placeholder="Ej: Juan Pérez" class="w-full bg-dark-bg border border-gray-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-gray-300 mb-2">Correo Electrónico</label>
+                            <input type="email" required placeholder="juan@empresa.cl" class="w-full bg-dark-bg border border-gray-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-500">
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-medium text-gray-300 mb-2">Teléfono / WhatsApp</label>
+                            <input type="tel" required placeholder="+56 9 1234 5678" class="w-full bg-dark-bg border border-gray-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-gray-300 mb-2">Canal Principal / Sitio Web</label>
+                            <input type="text" placeholder="@tu_cuenta o www.tutienda.cl" class="w-full bg-dark-bg border border-gray-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-500">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-gray-300 mb-2">Plan de Interés o Necesidad</label>
+                        <select id="contact-plan-select" class="w-full bg-dark-bg border border-gray-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-500">
+                            <option value="Plan START">Plan START ($199.000 CLP/mes)</option>
+                            <option value="Plan PRO" selected>Plan PRO ($349.000 CLP/mes)</option>
+                            <option value="Plan STUDIO">Plan STUDIO ($599.000 CLP/mes)</option>
+                            <option value="Cotización Personalizada">Cotización Personalizada</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-gray-300 mb-2">Detalles adicionales</label>
+                        <textarea rows="4" placeholder="¿Qué competidores te gustaría monitorear o qué tipo de contenido buscas?" class="w-full bg-dark-bg border border-gray-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-500"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold rounded-xl transition-all shadow-lg shadow-brand-600/30 text-sm">
+                        Enviar Solicitud
+                    </button>
+                    
+                    <div id="form-success-msg" class="hidden p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-center text-xs">
+                        ¡Gracias por contactarnos! Un ejecutivo de SocialPulse se comunicará contigo en breve para revisar tu propuesta.
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-card border-t border-gray-800 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center">
+                    <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+                </div>
+                <span class="font-bold text-lg text-white">SocialPulse Chile</span>
+            </div>
+
+            <p class="text-xs text-gray-500 text-center md:text-left">
+                © 2026 SocialPulse. Todos los derechos reservados. Servicios de gestión de contenido y automatización legítima.
+            </p>
+
+            <div class="flex gap-6 text-gray-400 text-xs">
+                <a href="#transparencia" class="hover:text-white">Términos & Políticas</a>
+                <a href="#contacto" class="hover:text-white">Soporte</a>
+                <a href="#planes" class="hover:text-white">Planes CLP</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Tab Switching Logic for Live Demo
+        function switchTab(tabId) {
+            const tabs = ['tab-competencia', 'tab-chat', 'tab-calendario'];
+            tabs.forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+                document.getElementById('btn-' + id).classList.remove('bg-brand-600', 'text-white');
+                document.getElementById('btn-' + id).classList.add('text-gray-400');
+            });
+
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById('btn-' + tabId).classList.add('bg-brand-600', 'text-white');
+            document.getElementById('btn-' + tabId).classList.remove('text-gray-400');
+        }
+
+        // Initialize Chart.js Competitor Price Tracker
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('competitorChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
+                    datasets: [
+                        {
+                            label: 'Mi Tienda',
+                            data: [85000, 85000, 82000, 82000],
+                            borderColor: '#3b82f6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            fill: true,
+                            tension: 0.3
+                        },
+                        {
+                            label: 'Competidor Directo',
+                            data: [89900, 89900, 74900, 74900],
+                            borderColor: '#ef4444',
+                            borderDash: [5, 5],
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: { color: '#9ca3af', font: { size: 11 } }
+                        }
+                    },
+                    scales: {
+                        x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af' } },
+                        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af' } }
+                    }
+                }
+            });
+
+            // Initialize Quotation Calculator
+            const slider = document.getElementById('slider-videos');
+            slider.addEventListener('input', calculateCustomPrice);
+            calculateCustomPrice();
+        });
+
+        // Chat Simulation Function
+        function sendSimulatedChat() {
+            const input = document.getElementById('sim-chat-input');
+            const messagesContainer = document.getElementById('chat-messages');
+            const text = input.value.trim();
+
+            if (!text) return;
+
+            // User Message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'flex justify-start';
+            userMsg.innerHTML = `<div class="bg-gray-800 text-gray-200 p-3 rounded-xl max-w-[80%]">${text}</div>`;
+            messagesContainer.appendChild(userMsg);
+
+            input.value = '';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            // Bot Response Delay Simulation
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'flex justify-end';
+                botMsg.innerHTML = `
+                    <div class="bg-brand-600 text-white p-3 rounded-xl max-w-[80%] space-y-1">
+                        <p>Gracias por tu consulta sobre "${text}". Un especialista o nuestro bot automatizado responderá en segundos.</p>
+                        <span class="text-[9px] text-brand-200 block text-right">Generado por IA • Justo ahora</span>
+                    </div>
+                `;
+                messagesContainer.appendChild(botMsg);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 800);
+        }
+
+        // Custom Calculator Function
+        function calculateCustomPrice() {
+            const videos = parseInt(document.getElementById('slider-videos').value);
+            document.getElementById('calc-video-count').innerText = `${videos} videos/mes`;
+
+            // Base price calculation ($10.500 CLP per video base)
+            const videoPrice = videos * 10500;
+
+            // Addons
+            let addonsPrice = 0;
+            if (document.getElementById('addon-ugc').checked) addonsPrice += 45000;
+            if (document.getElementById('addon-crm').checked) addonsPrice += 30000;
+            if (document.getElementById('addon-monitoring').checked) addonsPrice += 50000;
+
+            const totalPrice = videoPrice + addonsPrice;
+
+            // Format numbers to CLP
+            document.getElementById('summary-video-price').innerText = `$${videoPrice.toLocaleString('es-CL')}`;
+            document.getElementById('summary-addons-price').innerText = `$${addonsPrice.toLocaleString('es-CL')}`;
+            document.getElementById('calc-total').innerText = `$${totalPrice.toLocaleString('es-CL')}`;
+        }
+
+        // Select Plan helper
+        function selectPlan(planName, price) {
+            const select = document.getElementById('contact-plan-select');
+            if (select) {
+                select.value = planName;
+            }
+        }
+
+        // Handle Form Submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const msg = document.getElementById('form-success-msg');
+            msg.classList.remove('hidden');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
