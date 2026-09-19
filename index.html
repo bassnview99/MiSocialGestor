@@ -1,6 +1,1727 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mi Gestor Social | Automatización y Gestión Digital</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a'
+            },
+            dark: {
+              bg: '#080c14',
+              card: '#101722',
+              border: '#202938',
+              muted: '#344054'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #080c14;
+      color: #f3f4f6;
+    }
+
+    .glass {
+      background: rgba(16, 23, 34, .75);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,.07);
+    }
+
+    .card {
+      background: rgba(16, 23, 34, .65);
+      border: 1px solid rgba(255,255,255,.06);
+      transition: .3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(59,130,246,.45);
+      box-shadow: 0 20px 50px rgba(37,99,235,.12);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg,#60a5fa,#a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .glow {
+      box-shadow: 0 0 80px rgba(37,99,235,.15);
+    }
+
+    .timeline-line {
+      background: linear-gradient(to bottom,#2563eb,transparent);
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-800/50">
+
+  <div class="max-w-7xl mx-auto px-5 h-20 flex items-center justify-between">
+
+    <a href="#" class="flex items-center gap-3">
+
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center">
+        <i data-lucide="cpu" class="w-6 h-6"></i>
+      </div>
+
+      <div>
+        <span class="font-bold text-xl text-white">
+          MiGestor<span class="gradient-text">Social</span>
+        </span>
+
+        <div class="text-[10px] text-gray-500 uppercase tracking-widest">
+          Digital Automation
+        </div>
+      </div>
+
+    </a>
+
+    <nav class="hidden lg:flex gap-7 text-sm text-gray-300">
+
+      <a href="#funciones" class="hover:text-white">Funciones</a>
+      <a href="#contenido" class="hover:text-white">Contenido</a>
+      <a href="#automatizaciones" class="hover:text-white">Automatización</a>
+      <a href="#dashboard" class="hover:text-white">Dashboard</a>
+      <a href="#planes" class="hover:text-white">Planes</a>
+
+    </nav>
+
+    <a
+      href="#cotizador"
+      class="hidden sm:flex bg-blue-600 hover:bg-blue-500 px-5 py-2.5 rounded-lg font-semibold text-sm"
+    >
+      Comenzar
+    </a>
+
+    <button id="menuBtn" class="lg:hidden">
+      <i data-lucide="menu"></i>
+    </button>
+
+  </div>
+
+  <div id="mobileMenu" class="hidden lg:hidden px-5 pb-5 space-y-3 bg-[#0b111b]">
+
+    <a href="#funciones" class="block py-2">Funciones</a>
+    <a href="#contenido" class="block py-2">Contenido</a>
+    <a href="#automatizaciones" class="block py-2">Automatización</a>
+    <a href="#dashboard" class="block py-2">Dashboard</a>
+    <a href="#planes" class="block py-2">Planes</a>
+
+  </div>
+
+</header>
+
+
+<main class="pt-20">
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="relative overflow-hidden">
+
+  <div class="absolute w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[140px] top-20 left-1/2 -translate-x-1/2"></div>
+
+  <div class="max-w-6xl mx-auto px-5 py-28 text-center relative">
+
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-blue-300 text-sm mb-8">
+
+      <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+
+      Automatización digital para negocios y creadores
+
+    </div>
+
+    <h1 class="text-5xl md:text-7xl font-extrabold leading-tight">
+
+      Tu contenido.
+      <br>
+
+      <span class="gradient-text">
+        Tu público. Tu tiempo.
+      </span>
+
+    </h1>
+
+    <p class="max-w-3xl mx-auto text-gray-400 text-lg md:text-xl mt-7 leading-relaxed">
+
+      Automatiza tareas repetitivas de Instagram, TikTok, YouTube y otros canales,
+      organiza tu contenido, monitorea información y recibe alertas sin contratar
+      un social manager a tiempo completo.
+
+    </p>
+
+    <div class="flex flex-col sm:flex-row justify-center gap-4 mt-10">
+
+      <a
+        href="#planes"
+        class="px-8 py-4 bg-blue-600 hover:bg-blue-500 rounded-xl font-semibold"
+      >
+        Ver planes
+      </a>
+
+      <a
+        href="#demo"
+        class="px-8 py-4 glass rounded-xl font-semibold"
+      >
+        Ver cómo funciona
+      </a>
+
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-5 mt-20">
+
+      <div class="glass rounded-xl p-5">
+        <div class="text-2xl font-bold">24/7</div>
+        <div class="text-xs text-gray-500 mt-1">Automatización</div>
+      </div>
+
+      <div class="glass rounded-xl p-5">
+        <div class="text-2xl font-bold">4+</div>
+        <div class="text-xs text-gray-500 mt-1">Canales integrables</div>
+      </div>
+
+      <div class="glass rounded-xl p-5">
+        <div class="text-2xl font-bold">IA</div>
+        <div class="text-xs text-gray-500 mt-1">Asistencia inteligente</div>
+      </div>
+
+      <div class="glass rounded-xl p-5">
+        <div class="text-2xl font-bold">100%</div>
+        <div class="text-xs text-gray-500 mt-1">Control del cliente</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PLATAFORMAS
+========================================================= -->
+
+<section class="py-12 border-y border-gray-800">
+
+  <div class="max-w-6xl mx-auto px-5">
+
+    <p class="text-center text-gray-500 text-sm mb-7">
+      Diseñado para centralizar tu presencia digital
+    </p>
+
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-5">
+
+      <div class="card rounded-xl p-5 text-center">
+        <i data-lucide="instagram" class="mx-auto mb-2"></i>
+        <span>Instagram</span>
+      </div>
+
+      <div class="card rounded-xl p-5 text-center">
+        <i data-lucide="youtube" class="mx-auto mb-2"></i>
+        <span>YouTube</span>
+      </div>
+
+      <div class="card rounded-xl p-5 text-center">
+        <i data-lucide="music-2" class="mx-auto mb-2"></i>
+        <span>TikTok</span>
+      </div>
+
+      <div class="card rounded-xl p-5 text-center">
+        <i data-lucide="facebook" class="mx-auto mb-2"></i>
+        <span>Facebook</span>
+      </div>
+
+      <div class="card rounded-xl p-5 text-center">
+        <i data-lucide="table-2" class="mx-auto mb-2"></i>
+        <span>Google Sheets</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     FUNCIONES
+========================================================= -->
+
+<section id="funciones" class="py-24">
+
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="max-w-3xl mb-14">
+
+      <span class="text-blue-400 text-sm uppercase tracking-widest">
+        Ecosistema
+      </span>
+
+      <h2 class="text-4xl md:text-5xl font-bold mt-3">
+        Mucho más que un social manager
+      </h2>
+
+      <p class="text-gray-400 mt-5">
+        Una plataforma para gestionar contenido, automatizar procesos,
+        analizar información y mantener tu operación digital organizada.
+      </p>
+
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+
+
+      <!-- MONITOREO -->
+
+      <div class="card rounded-2xl p-7">
+
+        <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-5">
+          <i data-lucide="eye"></i>
+        </div>
+
+        <h3 class="text-xl font-bold">
+          Monitoreo inteligente
+        </h3>
+
+        <p class="text-gray-400 text-sm mt-3">
+          Mantén vigilada la información relevante para tu negocio.
+        </p>
+
+        <ul class="mt-5 space-y-3 text-sm text-gray-300">
+
+          <li>✓ Precios de competidores</li>
+          <li>✓ Stock de productos</li>
+          <li>✓ Cambios en sitios web</li>
+          <li>✓ Nuevos productos</li>
+          <li>✓ Ofertas</li>
+          <li>✓ Información pública</li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- AUTOMATIZACION -->
+
+      <div class="card rounded-2xl p-7">
+
+        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-5">
+          <i data-lucide="zap"></i>
+        </div>
+
+        <h3 class="text-xl font-bold">
+          Automatizaciones
+        </h3>
+
+        <p class="text-gray-400 text-sm mt-3">
+          Reduce tareas repetitivas y conecta tus herramientas.
+        </p>
+
+        <ul class="mt-5 space-y-3 text-sm text-gray-300">
+
+          <li>✓ Respuestas automáticas</li>
+          <li>✓ Clasificación de leads</li>
+          <li>✓ Alertas</li>
+          <li>✓ Formularios</li>
+          <li>✓ Reportes</li>
+          <li>✓ Google Sheets / CRM</li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- IA -->
+
+      <div class="card rounded-2xl p-7">
+
+        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-5">
+          <i data-lucide="bot"></i>
+        </div>
+
+        <h3 class="text-xl font-bold">
+          IA para tu negocio
+        </h3>
+
+        <p class="text-gray-400 text-sm mt-3">
+          Utiliza IA como asistente para analizar y preparar información.
+        </p>
+
+        <ul class="mt-5 space-y-3 text-sm text-gray-300">
+
+          <li>✓ Clasificación de mensajes</li>
+          <li>✓ Borradores de respuestas</li>
+          <li>✓ Resumen de documentos</li>
+          <li>✓ Extracción de información</li>
+          <li>✓ Copys para contenido</li>
+          <li>✓ Asistentes internos</li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- VIDEOS -->
+
+      <div class="card rounded-2xl p-7">
+
+        <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center mb-5">
+          <i data-lucide="video"></i>
+        </div>
+
+        <h3 class="text-xl font-bold">
+          Producción de contenido
+        </h3>
+
+        <p class="text-gray-400 text-sm mt-3">
+          Convierte una idea en diferentes piezas de contenido.
+        </p>
+
+        <ul class="mt-5 space-y-3 text-sm text-gray-300">
+
+          <li>✓ Guiones</li>
+          <li>✓ Subtítulos</li>
+          <li>✓ Reels</li>
+          <li>✓ Shorts</li>
+          <li>✓ Videos verticales</li>
+          <li>✓ Adaptaciones de formato</li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- ANALYTICS -->
+
+      <div class="card rounded-2xl p-7">
+
+        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-5">
+          <i data-lucide="bar-chart-3"></i>
+        </div>
+
+        <h3 class="text-xl font-bold">
+          Métricas
+        </h3>
+
+        <p class="text-gray-400 text-sm mt-3">
+          Entiende qué contenido funciona y dónde concentrar esfuerzos.
+        </p>
+
+        <ul class="mt-5 space-y-3 text-sm text-gray-300">
+
+          <li>✓ Alcance</li>
+          <li>✓ Interacciones</li>
+          <li>✓ Crecimiento</li>
+          <li>✓ Contenido destacado</li>
+          <li>✓ Leads</li>
+          <li>✓ Reportes</li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- ALERTAS -->
+
+      <div class="card rounded-2xl p-7">
+
+        <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-400 flex items-center justify-center mb-5">
+          <i data-lucide="bell"></i>
+        </div>
+
+        <h3 class="text-xl font-bold">
+          Alertas
+        </h3>
+
+        <p class="text-gray-400 text-sm mt-3">
+          Recibe información importante cuando sucede algo.
+        </p>
+
+        <ul class="mt-5 space-y-3 text-sm text-gray-300">
+
+          <li>✓ Telegram</li>
+          <li>✓ Email</li>
+          <li>✓ Cambios de precios</li>
+          <li>✓ Nuevos leads</li>
+          <li>✓ Cambios de stock</li>
+          <li>✓ Errores de servicios</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PRODUCCION Y DISTRIBUCION
+========================================================= -->
+
+<section id="contenido" class="py-24 bg-[#0b111b] border-y border-gray-800">
+
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="text-center max-w-3xl mx-auto">
+
+      <span class="text-blue-400 uppercase text-sm tracking-widest">
+        Content Factory
+      </span>
+
+      <h2 class="text-4xl md:text-5xl font-bold mt-3">
+        Un contenido. Varias posibilidades.
+      </h2>
+
+      <p class="text-gray-400 mt-5">
+        Organiza, adapta y prepara contenido para distintos canales desde
+        un mismo flujo de trabajo.
+      </p>
+
+    </div>
+
+
+    <div class="grid lg:grid-cols-5 gap-5 mt-16 items-center">
+
+      <div class="card p-6 rounded-2xl text-center">
+        <i data-lucide="lightbulb" class="mx-auto text-yellow-400 mb-3"></i>
+        <strong>Idea</strong>
+        <p class="text-xs text-gray-500 mt-2">Tema y objetivo</p>
+      </div>
+
+      <div class="hidden lg:block text-center text-blue-500">
+        →
+      </div>
+
+      <div class="card p-6 rounded-2xl text-center">
+        <i data-lucide="video" class="mx-auto text-pink-400 mb-3"></i>
+        <strong>Contenido</strong>
+        <p class="text-xs text-gray-500 mt-2">Video original</p>
+      </div>
+
+      <div class="hidden lg:block text-center text-blue-500">
+        →
+      </div>
+
+      <div class="card p-6 rounded-2xl text-center">
+        <i data-lucide="share-2" class="mx-auto text-blue-400 mb-3"></i>
+        <strong>Distribución</strong>
+        <p class="text-xs text-gray-500 mt-2">Canales autorizados</p>
+      </div>
+
+    </div>
+
+
+    <div class="grid md:grid-cols-3 gap-6 mt-10">
+
+      <div class="glass p-7 rounded-2xl">
+
+        <div class="flex items-center gap-3">
+          <i data-lucide="youtube" class="text-red-400"></i>
+          <h3 class="font-bold">YouTube</h3>
+        </div>
+
+        <p class="text-gray-400 text-sm mt-4">
+          Organización de videos largos, Shorts, títulos,
+          descripciones y programación.
+        </p>
+
+      </div>
+
+
+      <div class="glass p-7 rounded-2xl">
+
+        <div class="flex items-center gap-3">
+          <i data-lucide="instagram" class="text-pink-400"></i>
+          <h3 class="font-bold">Instagram</h3>
+        </div>
+
+        <p class="text-gray-400 text-sm mt-4">
+          Preparación de contenido vertical, calendario,
+          publicaciones y análisis.
+        </p>
+
+      </div>
+
+
+      <div class="glass p-7 rounded-2xl">
+
+        <div class="flex items-center gap-3">
+          <i data-lucide="music-2" class="text-white"></i>
+          <h3 class="font-bold">TikTok</h3>
+        </div>
+
+        <p class="text-gray-400 text-sm mt-4">
+          Organización de videos cortos, borradores,
+          publicaciones autorizadas y métricas.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     CALENDARIO
+========================================================= -->
+
+<section class="py-24">
+
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+      <div>
+
+        <span class="text-blue-400 uppercase text-sm tracking-widest">
+          Planificación
+        </span>
+
+        <h2 class="text-4xl font-bold mt-3">
+          Tu calendario de contenido en un solo lugar
+        </h2>
+
+        <p class="text-gray-400 mt-5">
+          Organiza publicaciones, campañas, videos y tareas sin depender
+          de múltiples herramientas.
+        </p>
+
+        <div class="mt-8 space-y-4">
+
+          <div class="flex gap-3">
+            <i data-lucide="check-circle" class="text-emerald-400"></i>
+            <span>Programación de contenido</span>
+          </div>
+
+          <div class="flex gap-3">
+            <i data-lucide="check-circle" class="text-emerald-400"></i>
+            <span>Borradores y revisión</span>
+          </div>
+
+          <div class="flex gap-3">
+            <i data-lucide="check-circle" class="text-emerald-400"></i>
+            <span>Calendario mensual</span>
+          </div>
+
+          <div class="flex gap-3">
+            <i data-lucide="check-circle" class="text-emerald-400"></i>
+            <span>Reutilización de contenido</span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="glass rounded-2xl p-6 glow">
+
+        <div class="flex justify-between items-center mb-6">
+
+          <div>
+            <div class="font-bold">Calendario</div>
+            <div class="text-xs text-gray-500">Septiembre 2026</div>
+          </div>
+
+          <button class="p-2 rounded-lg bg-gray-800">
+            <i data-lucide="plus" class="w-4"></i>
+          </button>
+
+        </div>
+
+        <div class="grid grid-cols-7 gap-2 text-center text-xs">
+
+          <span class="text-gray-600">L</span>
+          <span class="text-gray-600">M</span>
+          <span class="text-gray-600">X</span>
+          <span class="text-gray-600">J</span>
+          <span class="text-gray-600">V</span>
+          <span class="text-gray-600">S</span>
+          <span class="text-gray-600">D</span>
+
+          <span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+          <span>7</span><span>8</span><span class="bg-blue-600 rounded-lg py-2">9</span><span>10</span><span>11</span><span>12</span><span>13</span>
+          <span>14</span><span>15</span><span>16</span><span class="bg-purple-600 rounded-lg py-2">17</span><span>18</span><span>19</span><span>20</span>
+          <span>21</span><span>22</span><span>23</span><span>24</span><span class="bg-pink-600 rounded-lg py-2">25</span><span>26</span><span>27</span>
+
+        </div>
+
+        <div class="border-t border-gray-800 mt-6 pt-5 space-y-3">
+
+          <div class="flex justify-between text-sm">
+            <span>🎬 Reel</span>
+            <span class="text-gray-500">09:00</span>
+          </div>
+
+          <div class="flex justify-between text-sm">
+            <span>▶️ YouTube Short</span>
+            <span class="text-gray-500">14:00</span>
+          </div>
+
+          <div class="flex justify-between text-sm">
+            <span>📸 Instagram</span>
+            <span class="text-gray-500">19:00</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     AUTOMATIZACIONES
+========================================================= -->
+
+<section id="automatizaciones" class="py-24 bg-[#0b111b] border-y border-gray-800">
+
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="text-center max-w-3xl mx-auto">
+
+      <span class="text-blue-400 uppercase text-sm tracking-widest">
+        Automation Builder
+      </span>
+
+      <h2 class="text-4xl md:text-5xl font-bold mt-3">
+        Cuando → Si → Hacer
+      </h2>
+
+      <p class="text-gray-400 mt-5">
+        Diseña automatizaciones según las necesidades reales de tu negocio.
+      </p>
+
+    </div>
+
+
+    <div class="max-w-5xl mx-auto mt-14 grid md:grid-cols-3 gap-5">
+
+      <div class="glass rounded-2xl p-7 border-t-2 border-blue-500">
+
+        <span class="text-xs text-blue-400 uppercase">
+          CUANDO
+        </span>
+
+        <h3 class="text-xl font-bold mt-3">
+          Llega un mensaje
+        </h3>
+
+        <p class="text-gray-500 text-sm mt-3">
+          Un cliente realiza una consulta en uno de tus canales.
+        </p>
+
+      </div>
+
+
+      <div class="glass rounded-2xl p-7 border-t-2 border-purple-500">
+
+        <span class="text-xs text-purple-400 uppercase">
+          SI
+        </span>
+
+        <h3 class="text-xl font-bold mt-3">
+          Contiene "precio"
+        </h3>
+
+        <p class="text-gray-500 text-sm mt-3">
+          El sistema clasifica automáticamente la consulta.
+        </p>
+
+      </div>
+
+
+      <div class="glass rounded-2xl p-7 border-t-2 border-emerald-500">
+
+        <span class="text-xs text-emerald-400 uppercase">
+          HACER
+        </span>
+
+        <h3 class="text-xl font-bold mt-3">
+          Crear respuesta
+        </h3>
+
+        <p class="text-gray-500 text-sm mt-3">
+          Prepara una respuesta y registra el contacto como lead.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="text-center mt-10">
+
+      <button
+        onclick="showToast('Constructor de automatizaciones disponible en tu panel.')"
+        class="px-7 py-3 bg-blue-600 hover:bg-blue-500 rounded-xl font-semibold"
+      >
+        Crear automatización
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     DASHBOARD
+========================================================= -->
+
+<section id="dashboard" class="py-24">
+
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="text-center max-w-3xl mx-auto">
+
+      <span class="text-blue-400 uppercase text-sm tracking-widest">
+        Dashboard
+      </span>
+
+      <h2 class="text-4xl md:text-5xl font-bold mt-3">
+        Entiende lo que está pasando
+      </h2>
+
+      <p class="text-gray-400 mt-5">
+        Métricas de contenido, comunidad y operación desde una sola interfaz.
+      </p>
+
+    </div>
+
+
+    <div class="grid md:grid-cols-4 gap-5 mt-14">
+
+      <div class="card rounded-xl p-5">
+        <span class="text-gray-500 text-sm">Seguidores</span>
+        <div class="text-3xl font-bold mt-2">12.430</div>
+        <div class="text-emerald-400 text-xs mt-2">+8,4%</div>
+      </div>
+
+      <div class="card rounded-xl p-5">
+        <span class="text-gray-500 text-sm">Alcance</span>
+        <div class="text-3xl font-bold mt-2">184K</div>
+        <div class="text-emerald-400 text-xs mt-2">+16,2%</div>
+      </div>
+
+      <div class="card rounded-xl p-5">
+        <span class="text-gray-500 text-sm">Contenido</span>
+        <div class="text-3xl font-bold mt-2">24</div>
+        <div class="text-gray-500 text-xs mt-2">este mes</div>
+      </div>
+
+      <div class="card rounded-xl p-5">
+        <span class="text-gray-500 text-sm">Leads</span>
+        <div class="text-3xl font-bold mt-2">86</div>
+        <div class="text-emerald-400 text-xs mt-2">+21%</div>
+      </div>
+
+    </div>
+
+
+    <div class="glass rounded-2xl p-5 md:p-8 mt-7">
+
+      <canvas id="growthChart" height="100"></canvas>
+
+    </div>
+
+
+    <div class="grid md:grid-cols-3 gap-5 mt-7">
+
+      <div class="glass rounded-xl p-6">
+
+        <span class="text-xs text-gray-500">
+          TOP CONTENIDO
+        </span>
+
+        <h3 class="font-bold mt-3">
+          Video #24
+        </h3>
+
+        <div class="text-2xl font-bold mt-2">
+          82.400
+        </div>
+
+        <p class="text-gray-500 text-xs">
+          visualizaciones
+        </p>
+
+      </div>
+
+
+      <div class="glass rounded-xl p-6">
+
+        <span class="text-xs text-gray-500">
+          TENDENCIA
+        </span>
+
+        <h3 class="font-bold mt-3">
+          Zapatillas urbanas
+        </h3>
+
+        <div class="text-emerald-400 text-sm mt-2">
+          +42% interés
+        </div>
+
+      </div>
+
+
+      <div class="glass rounded-xl p-6">
+
+        <span class="text-xs text-gray-500">
+          ALERTA
+        </span>
+
+        <h3 class="font-bold mt-3">
+          Competidor actualizado
+        </h3>
+
+        <div class="text-orange-400 text-sm mt-2">
+          Cambio detectado
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     CENTRO DE COMUNIDAD
+========================================================= -->
+
+<section class="py-24 bg-[#0b111b] border-y border-gray-800">
+
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+      <div>
+
+        <span class="text-blue-400 uppercase text-sm tracking-widest">
+          Comunidad
+        </span>
+
+        <h2 class="text-4xl font-bold mt-3">
+          La IA propone. Tú decides.
+        </h2>
+
+        <p class="text-gray-400 mt-5">
+          Centraliza consultas y utiliza automatización para clasificar
+          conversaciones, preparar respuestas y detectar oportunidades.
+        </p>
+
+        <div class="mt-8 space-y-4">
+
+          <div class="flex gap-3">
+            <i data-lucide="message-circle" class="text-blue-400"></i>
+            <span>Clasificación de mensajes</span>
+          </div>
+
+          <div class="flex gap-3">
+            <i data-lucide="users" class="text-purple-400"></i>
+            <span>Detección de leads</span>
+          </div>
+
+          <div class="flex gap-3">
+            <i data-lucide="sparkles" class="text-yellow-400"></i>
+            <span>Respuestas sugeridas por IA</span>
+          </div>
+
+          <div class="flex gap-3">
+            <i data-lucide="user-check" class="text-emerald-400"></i>
+            <span>Derivación a una persona</span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="glass rounded-2xl overflow-hidden">
+
+        <div class="p-5 border-b border-gray-800 flex justify-between">
+
+          <strong>Bandeja inteligente</strong>
+
+          <span class="text-xs text-emerald-400">
+            ● Activa
+          </span>
+
+        </div>
+
+
+        <div class="p-5 space-y-4">
+
+          <div class="bg-gray-900 rounded-xl p-4">
+
+            <div class="flex justify-between">
+
+              <strong class="text-sm">
+                @cliente_01
+              </strong>
+
+              <span class="text-xs text-blue-400">
+                LEAD
+              </span>
+
+            </div>
+
+            <p class="text-sm text-gray-400 mt-2">
+              ¿Cuál es el precio del producto?
+            </p>
+
+            <button class="text-xs text-blue-400 mt-3">
+              Ver respuesta sugerida
+            </button>
+
+          </div>
+
+
+          <div class="bg-gray-900 rounded-xl p-4">
+
+            <div class="flex justify-between">
+
+              <strong class="text-sm">
+                @usuario_02
+              </strong>
+
+              <span class="text-xs text-gray-500">
+                CONSULTA
+              </span>
+
+            </div>
+
+            <p class="text-sm text-gray-400 mt-2">
+              ¿Hacen envíos a Santiago?
+            </p>
+
+            <button class="text-xs text-blue-400 mt-3">
+              Responder
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     LEGITIMIDAD
+========================================================= -->
+
+<section class="py-24">
+
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="text-center max-w-3xl mx-auto">
+
+      <span class="text-emerald-400 uppercase text-sm tracking-widest">
+        Uso responsable
+      </span>
+
+      <h2 class="text-4xl font-bold mt-3">
+        Automatización transparente
+      </h2>
+
+      <p class="text-gray-400 mt-5">
+        Diseñamos el servicio para trabajar con contenido, cuentas y datos
+        de forma autorizada y evitando prácticas destinadas a inflar
+        artificialmente las métricas.
+      </p>
+
+    </div>
+
+
+    <div class="grid md:grid-cols-2 gap-7 mt-14">
+
+      <div class="glass rounded-2xl p-8 border-l-4 border-emerald-500">
+
+        <h3 class="text-xl font-bold">
+          Sí hacemos
+        </h3>
+
+        <ul class="mt-6 space-y-4 text-gray-300">
+
+          <li>✓ Publicación mediante integraciones autorizadas</li>
+          <li>✓ Contenido original o con derechos adecuados</li>
+          <li>✓ Monitoreo de información pública permitido</li>
+          <li>✓ Automatización de tareas propias</li>
+          <li>✓ Análisis de métricas de cuentas conectadas</li>
+          <li>✓ Pruebas en sistemas autorizados</li>
+
+        </ul>
+
+      </div>
+
+
+      <div class="glass rounded-2xl p-8 border-l-4 border-red-500">
+
+        <h3 class="text-xl font-bold">
+          No hacemos
+        </h3>
+
+        <ul class="mt-6 space-y-4 text-gray-300">
+
+          <li>✕ Seguidores falsos</li>
+          <li>✕ Likes o reproducciones artificiales</li>
+          <li>✕ Cuentas falsas masivas</li>
+          <li>✕ Clics sobre publicidad propia</li>
+          <li>✕ Evasión de bloqueos o límites</li>
+          <li>✕ Acceso a cuentas sin autorización</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PLANES
+========================================================= -->
+
+<section id="planes" class="py-24 bg-[#0b111b] border-y border-gray-800">
+
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="text-center max-w-3xl mx-auto">
+
+      <span class="text-blue-400 uppercase text-sm tracking-widest">
+        Planes
+      </span>
+
+      <h2 class="text-4xl md:text-5xl font-bold mt-3">
+        Empieza con lo que necesitas
+      </h2>
+
+      <p class="text-gray-400 mt-5">
+        Puedes comenzar pequeño y aumentar automatizaciones a medida que
+        crece tu negocio.
+      </p>
+
+    </div>
+
+
+    <div class="grid lg:grid-cols-3 gap-7 mt-14">
+
+
+      <!-- START -->
+
+      <div class="card rounded-2xl p-8">
+
+        <span class="text-sm text-gray-500">
+          START
+        </span>
+
+        <h3 class="text-2xl font-bold mt-2">
+          $19.990
+          <span class="text-sm text-gray-500">/mes</span>
+        </h3>
+
+        <p class="text-gray-500 text-sm mt-3">
+          Para comenzar a organizar tu presencia digital.
+        </p>
+
+        <ul class="mt-7 space-y-4 text-sm">
+
+          <li>✓ 1 marca</li>
+          <li>✓ Hasta 2 canales</li>
+          <li>✓ Calendario</li>
+          <li>✓ Programación</li>
+          <li>✓ Métricas básicas</li>
+          <li>✓ Alertas</li>
+
+        </ul>
+
+        <button
+          onclick="selectPlan('START')"
+          class="w-full mt-8 py-3 rounded-xl bg-gray-800 hover:bg-gray-700"
+        >
+          Elegir START
+        </button>
+
+      </div>
+
+
+      <!-- PRO -->
+
+      <div class="relative card rounded-2xl p-8 border-blue-500/50">
+
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 px-4 py-1 rounded-full text-xs font-bold">
+          MÁS COMPLETO
+        </div>
+
+        <span class="text-sm text-blue-400">
+          PRO
+        </span>
+
+        <h3 class="text-2xl font-bold mt-2">
+          $39.990
+          <span class="text-sm text-gray-500">/mes</span>
+        </h3>
+
+        <p class="text-gray-500 text-sm mt-3">
+          Para negocios que necesitan automatización.
+        </p>
+
+        <ul class="mt-7 space-y-4 text-sm">
+
+          <li>✓ Hasta 4 canales</li>
+          <li>✓ Automatizaciones</li>
+          <li>✓ IA</li>
+          <li>✓ Respuestas sugeridas</li>
+          <li>✓ Leads</li>
+          <li>✓ Reportes</li>
+          <li>✓ Monitoreo</li>
+
+        </ul>
+
+        <button
+          onclick="selectPlan('PRO')"
+          class="w-full mt-8 py-3 rounded-xl bg-blue-600 hover:bg-blue-500"
+        >
+          Elegir PRO
+        </button>
+
+      </div>
+
+
+      <!-- BUSINESS -->
+
+      <div class="card rounded-2xl p-8">
+
+        <span class="text-sm text-purple-400">
+          BUSINESS
+        </span>
+
+        <h3 class="text-2xl font-bold mt-2">
+          $79.990
+          <span class="text-sm text-gray-500">/mes</span>
+        </h3>
+
+        <p class="text-gray-500 text-sm mt-3">
+          Para operaciones digitales más completas.
+        </p>
+
+        <ul class="mt-7 space-y-4 text-sm">
+
+          <li>✓ Varias marcas</li>
+          <li>✓ Automatizaciones avanzadas</li>
+          <li>✓ IA avanzada</li>
+          <li>✓ Monitoreo comercial</li>
+          <li>✓ CRM / Sheets</li>
+          <li>✓ Dashboard avanzado</li>
+          <li>✓ Soporte</li>
+
+        </ul>
+
+        <button
+          onclick="selectPlan('BUSINESS')"
+          class="w-full mt-8 py-3 rounded-xl bg-purple-600 hover:bg-purple-500"
+        >
+          Elegir BUSINESS
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     COTIZADOR
+========================================================= -->
+
+<section id="cotizador" class="py-24">
+
+  <div class="max-w-4xl mx-auto px-5">
+
+    <div class="text-center">
+
+      <span class="text-blue-400 uppercase text-sm tracking-widest">
+        Cotizador
+      </span>
+
+      <h2 class="text-4xl font-bold mt-3">
+        Configura tu servicio
+      </h2>
+
+      <p class="text-gray-400 mt-5">
+        Selecciona las funciones que necesitas para estimar tu plan.
+      </p>
+
+    </div>
+
+
+    <div class="glass rounded-2xl p-7 md:p-10 mt-12">
+
+      <div class="grid md:grid-cols-2 gap-5">
+
+        <label class="block">
+
+          <span class="text-sm text-gray-400">
+            Canales
+          </span>
+
+          <select
+            id="channels"
+            onchange="calculatePrice()"
+            class="w-full mt-2 bg-gray-900 border border-gray-700 rounded-xl px-4 py-3"
+          >
+
+            <option value="0">1 canal</option>
+            <option value="5000">2 canales</option>
+            <option value="10000">3 canales</option>
+            <option value="15000">4+ canales</option>
+
+          </select>
+
+        </label>
+
+
+        <label class="block">
+
+          <span class="text-sm text-gray-400">
+            Automatización
+          </span>
+
+          <select
+            id="automation"
+            onchange="calculatePrice()"
+            class="w-full mt-2 bg-gray-900 border border-gray-700 rounded-xl px-4 py-3"
+          >
+
+            <option value="0">Sin automatización avanzada</option>
+            <option value="10000">Automatización básica</option>
+            <option value="20000">Automatización avanzada</option>
+
+          </select>
+
+        </label>
+
+
+        <label class="block">
+
+          <span class="text-sm text-gray-400">
+            IA
+          </span>
+
+          <select
+            id="ai"
+            onchange="calculatePrice()"
+            class="w-full mt-2 bg-gray-900 border border-gray-700 rounded-xl px-4 py-3"
+          >
+
+            <option value="0">Sin IA</option>
+            <option value="10000">IA básica</option>
+            <option value="20000">IA avanzada</option>
+
+          </select>
+
+        </label>
+
+
+        <label class="block">
+
+          <span class="text-sm text-gray-400">
+            Monitoreo
+          </span>
+
+          <select
+            id="monitoring"
+            onchange="calculatePrice()"
+            class="w-full mt-2 bg-gray-900 border border-gray-700 rounded-xl px-4 py-3"
+          >
+
+            <option value="0">Sin monitoreo</option>
+            <option value="10000">Monitoreo básico</option>
+            <option value="20000">Monitoreo avanzado</option>
+
+          </select>
+
+        </label>
+
+      </div>
+
+
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+
+        <div class="text-sm text-gray-500">
+          Estimación mensual
+        </div>
+
+        <div
+          id="price"
+          class="text-5xl font-extrabold gradient-text mt-2"
+        >
+          $19.990
+        </div>
+
+        <button
+          onclick="requestQuote()"
+          class="mt-7 px-8 py-3 bg-blue-600 hover:bg-blue-500 rounded-xl font-semibold"
+        >
+          Solicitar cotización
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="py-24 bg-gradient-to-b from-[#0b111b] to-[#080c14]">
+
+  <div class="max-w-5xl mx-auto px-5 text-center">
+
+    <div class="w-16 h-16 mx-auto rounded-2xl bg-blue-600/10 text-blue-400 flex items-center justify-center mb-7">
+
+      <i data-lucide="rocket" class="w-8 h-8"></i>
+
+    </div>
+
+    <h2 class="text-4xl md:text-6xl font-extrabold">
+      Deja de hacer manualmente
+      <span class="gradient-text">
+        lo que puedes automatizar.
+      </span>
+    </h2>
+
+    <p class="text-gray-400 max-w-2xl mx-auto mt-6 text-lg">
+      Organiza tus canales, automatiza procesos y utiliza tus datos
+      para tomar mejores decisiones.
+    </p>
+
+    <a
+      href="#cotizador"
+      class="inline-flex mt-9 px-8 py-4 bg-blue-600 hover:bg-blue-500 rounded-xl font-bold"
+    >
+      Crear mi configuración
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="border-t border-gray-800 py-10">
+
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="flex flex-col md:flex-row justify-between gap-7">
+
+      <div>
+
+        <div class="font-bold text-xl">
+          MiGestor<span class="gradient-text">Social</span>
+        </div>
+
+        <p class="text-gray-500 text-sm mt-2">
+          Automatización digital para negocios y creadores.
+        </p>
+
+      </div>
+
+      <div class="text-gray-500 text-sm">
+
+        © 2026 MiGestorSocial
+
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
+
+</main>
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div
+  id="toast"
+  class="fixed bottom-6 right-6 hidden bg-gray-900 border border-gray-700 rounded-xl px-5 py-4 shadow-2xl"
+>
+  <div id="toastMessage" class="text-sm"></div>
+</div>
+
+
+<script>
+
+  lucide.createIcons();
+
+
+  /* MOBILE MENU */
+
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+
+  /* CHART */
+
+  const ctx = document.getElementById('growthChart');
+
+  new Chart(ctx, {
+
+    type: 'line',
+
+    data: {
+
+      labels: [
+        'Lun',
+        'Mar',
+        'Mié',
+        'Jue',
+        'Vie',
+        'Sáb',
+        'Dom'
+      ],
+
+      datasets: [
+
+        {
+          label: 'Alcance',
+          data: [12000, 18000, 16000, 25000, 32000, 29000, 41000],
+          borderWidth: 2,
+          tension: .4
+        },
+
+        {
+          label: 'Interacciones',
+          data: [3000, 4200, 3900, 6000, 7200, 6800, 9400],
+          borderWidth: 2,
+          tension: .4
+        }
+
+      ]
+
+    },
+
+    options: {
+
+      responsive: true,
+
+      plugins: {
+
+        legend: {
+          labels: {
+            color: '#9ca3af'
+          }
+        }
+
+      },
+
+      scales: {
+
+        x: {
+          ticks: {
+            color: '#6b7280'
+          },
+
+          grid: {
+            color: 'rgba(255,255,255,.04)'
+          }
+
+        },
+
+        y: {
+
+          ticks: {
+            color: '#6b7280'
+          },
+
+          grid: {
+            color: 'rgba(255,255,255,.04)'
+          }
+
+        }
+
+      }
+
+    }
+
+  });
+
+
+  /* PRICE CALCULATOR */
+
+  function calculatePrice() {
+
+    const base = 19990;
+
+    const channels =
+      Number(document.getElementById('channels').value);
+
+    const automation =
+      Number(document.getElementById('automation').value);
+
+    const ai =
+      Number(document.getElementById('ai').value);
+
+    const monitoring =
+      Number(document.getElementById('monitoring').value);
+
+    const total =
+      base +
+      channels +
+      automation +
+      ai +
+      monitoring;
+
+    document.getElementById('price').innerText =
+      '$' + total.toLocaleString('es-CL');
+
+  }
+
+
+  /* PLAN */
+
+  function selectPlan(plan) {
+
+    showToast(
+      'Has seleccionado el plan ' +
+      plan +
+      '. Puedes continuar con la configuración.'
+    );
+
+    document
+      .getElementById('cotizador')
+      .scrollIntoView({
+        behavior: 'smooth'
+      });
+
+  }
+
+
+  /* QUOTE */
+
+  function requestQuote() {
+
+    const price =
+      document.getElementById('price').innerText;
+
+    showToast(
+      'Configuración estimada: ' +
+      price +
+      '. Conecta aquí tu formulario de contacto.'
+    );
+
+  }
+
+
+  /* TOAST */
+
+  function showToast(message) {
+
+    const toast =
+      document.getElementById('toast');
+
+    document.getElementById('toastMessage')
+      .innerText = message;
+
+    toast.classList.remove('hidden');
+
+    setTimeout(() => {
+
+      toast.classList.add('hidden');
+
+    }, 4000);
+
+  }
+
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Gestor Social | Automatización, Monitoreo & Producción de Contenido</title>
