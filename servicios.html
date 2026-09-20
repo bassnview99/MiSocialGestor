@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Servicios | Mi Gestor Social</title>
+  <meta name="description" content="Monitoreo inteligente, automatizaciones, IA, producción de contenido, métricas y alertas para tu presencia digital.">
+
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff', 100: '#dbeafe', 400: '#60a5fa', 500: '#3b82f6',
+              600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a'
+            },
+            dark: { bg: '#080c14', card: '#101722', border: '#202938', muted: '#344054' }
+          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #080c14; color: #f3f4f6; }
+    .glass { background: rgba(16, 23, 34, .75); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.07); }
+    .card { background: rgba(16, 23, 34, .65); border: 1px solid rgba(255,255,255,.06); transition: .3s ease; }
+    .card:hover { transform: translateY(-4px); border-color: rgba(59,130,246,.45); box-shadow: 0 20px 50px rgba(37,99,235,.12); }
+    .gradient-text { background: linear-gradient(135deg,#60a5fa,#a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  </style>
+</head>
+
+<body>
+
+<header class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-800/50">
+
+  <div class="max-w-7xl mx-auto px-5 h-20 flex items-center justify-between">
+
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="assets/img/logo-icon.png" alt="Logo Mi Gestor Social" class="w-11 h-11 object-contain">
+      <div>
+        <span class="font-bold text-xl text-white">MiGestor<span class="gradient-text">Social</span></span>
+        <div class="text-[10px] text-gray-500 uppercase tracking-widest">Digital Automation</div>
+      </div>
+    </a>
+
+    <nav class="hidden lg:flex gap-7 text-sm text-gray-300">
+      <a href="index.html#funciones" class="hover:text-white">Funciones</a>
+      <a href="servicios.html" class="text-white">Servicios</a>
+      <a href="index.html#planes" class="hover:text-white">Planes</a>
+      <a href="nosotros.html" class="hover:text-white">Nosotros</a>
+      <a href="contacto.html" class="hover:text-white">Contacto</a>
+    </nav>
+
+    <a href="contacto.html" class="hidden sm:flex bg-blue-600 hover:bg-blue-500 px-5 py-2.5 rounded-lg font-semibold text-sm">
+      Comenzar
+    </a>
+
+    <button id="menuBtn" class="lg:hidden">
+      <i data-lucide="menu"></i>
+    </button>
+
+  </div>
+
+  <div id="mobileMenu" class="hidden lg:hidden px-5 pb-5 space-y-3 bg-[#0b111b]">
+    <a href="index.html#funciones" class="block py-2">Funciones</a>
+    <a href="servicios.html" class="block py-2">Servicios</a>
+    <a href="index.html#planes" class="block py-2">Planes</a>
+    <a href="nosotros.html" class="block py-2">Nosotros</a>
+    <a href="contacto.html" class="block py-2">Contacto</a>
+  </div>
+
+</header>
+
+
+<main class="pt-20">
+
+<section class="relative overflow-hidden py-24">
+
+  <div class="absolute w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[140px] top-0 left-1/2 -translate-x-1/2"></div>
+
+  <div class="max-w-4xl mx-auto px-5 text-center relative">
+    <span class="text-blue-400 uppercase text-sm tracking-widest">Servicios</span>
+    <h1 class="text-4xl md:text-6xl font-extrabold mt-3">
+      Todo lo que necesitas para <span class="gradient-text">gestionar tu presencia digital</span>
+    </h1>
+    <p class="text-gray-400 text-lg mt-6 max-w-2xl mx-auto">
+      Combinamos monitoreo, automatización, inteligencia artificial y producción
+      de contenido en un solo ecosistema.
+    </p>
+  </div>
+
+</section>
+
+
+<section class="pb-24">
+  <div class="max-w-7xl mx-auto px-5 grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+
+    <div class="card rounded-2xl p-8">
+      <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-5">
+        <i data-lucide="eye"></i>
+      </div>
+      <h3 class="text-xl font-bold">Monitoreo inteligente</h3>
+      <p class="text-gray-400 text-sm mt-3">
+        Mantén vigilada la información relevante para tu negocio: precios de
+        competidores, stock, cambios en sitios web y ofertas.
+      </p>
+      <ul class="mt-5 space-y-2 text-sm text-gray-300">
+        <li>✓ Precios de competidores</li>
+        <li>✓ Stock de productos</li>
+        <li>✓ Cambios en sitios web</li>
+        <li>✓ Información pública</li>
+      </ul>
+    </div>
+
+    <div class="card rounded-2xl p-8">
+      <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-5">
+        <i data-lucide="zap"></i>
+      </div>
+      <h3 class="text-xl font-bold">Automatizaciones</h3>
+      <p class="text-gray-400 text-sm mt-3">
+        Reduce tareas repetitivas conectando tus canales y herramientas
+        con flujos "Cuando → Si → Hacer".
+      </p>
+      <ul class="mt-5 space-y-2 text-sm text-gray-300">
+        <li>✓ Respuestas automáticas</li>
+        <li>✓ Clasificación de leads</li>
+        <li>✓ Formularios y alertas</li>
+        <li>✓ Integración con Sheets/CRM</li>
+      </ul>
+    </div>
+
+    <div class="card rounded-2xl p-8">
+      <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-5">
+        <i data-lucide="bot"></i>
+      </div>
+      <h3 class="text-xl font-bold">IA para tu negocio</h3>
+      <p class="text-gray-400 text-sm mt-3">
+        Utiliza inteligencia artificial como asistente para clasificar,
+        redactar y resumir información.
+      </p>
+      <ul class="mt-5 space-y-2 text-sm text-gray-300">
+        <li>✓ Clasificación de mensajes</li>
+        <li>✓ Borradores de respuestas</li>
+        <li>✓ Resumen de documentos</li>
+        <li>✓ Copys para contenido</li>
+      </ul>
+    </div>
+
+    <div class="card rounded-2xl p-8">
+      <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center mb-5">
+        <i data-lucide="video"></i>
+      </div>
+      <h3 class="text-xl font-bold">Producción de contenido</h3>
+      <p class="text-gray-400 text-sm mt-3">
+        Convierte una idea en distintas piezas de contenido adaptadas a
+        cada canal.
+      </p>
+      <ul class="mt-5 space-y-2 text-sm text-gray-300">
+        <li>✓ Guiones y subtítulos</li>
+        <li>✓ Reels y Shorts</li>
+        <li>✓ Videos verticales</li>
+        <li>✓ Adaptación de formatos</li>
+      </ul>
+    </div>
+
+    <div class="card rounded-2xl p-8">
+      <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-5">
+        <i data-lucide="bar-chart-3"></i>
+      </div>
+      <h3 class="text-xl font-bold">Métricas</h3>
+      <p class="text-gray-400 text-sm mt-3">
+        Entiende qué contenido funciona y dónde concentrar esfuerzos con
+        reportes claros.
+      </p>
+      <ul class="mt-5 space-y-2 text-sm text-gray-300">
+        <li>✓ Alcance e interacciones</li>
+        <li>✓ Crecimiento de cuentas</li>
+        <li>✓ Contenido destacado</li>
+        <li>✓ Reportes de leads</li>
+      </ul>
+    </div>
+
+    <div class="card rounded-2xl p-8">
+      <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-400 flex items-center justify-center mb-5">
+        <i data-lucide="bell"></i>
+      </div>
+      <h3 class="text-xl font-bold">Alertas</h3>
+      <p class="text-gray-400 text-sm mt-3">
+        Recibe información importante en el momento en que sucede, por
+        Telegram o correo.
+      </p>
+      <ul class="mt-5 space-y-2 text-sm text-gray-300">
+        <li>✓ Cambios de precios</li>
+        <li>✓ Nuevos leads</li>
+        <li>✓ Cambios de stock</li>
+        <li>✓ Errores de servicios</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="py-20 bg-gradient-to-b from-[#0b111b] to-[#080c14]">
+  <div class="max-w-4xl mx-auto px-5 text-center">
+    <h2 class="text-3xl md:text-5xl font-extrabold">
+      ¿No sabes por dónde empezar?
+    </h2>
+    <p class="text-gray-400 max-w-2xl mx-auto mt-5 text-lg">
+      Cuéntanos tu caso y te recomendamos qué automatizar primero.
+    </p>
+    <a href="contacto.html" class="inline-flex mt-8 px-8 py-4 bg-blue-600 hover:bg-blue-500 rounded-xl font-bold">
+      Hablar con nosotros
+    </a>
+  </div>
+</section>
+
+</main>
+
+
+<footer class="border-t border-gray-800 py-14">
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="grid md:grid-cols-4 gap-10">
+
+      <div class="md:col-span-2">
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="assets/img/logo-icon.png" alt="Logo Mi Gestor Social" class="w-10 h-10 object-contain">
+          <div class="font-bold text-xl">MiGestor<span class="gradient-text">Social</span></div>
+        </a>
+        <p class="text-gray-500 text-sm mt-4 max-w-sm">
+          Automatización digital para negocios y creadores.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Navegación</h4>
+        <ul class="space-y-3 text-sm text-gray-400">
+          <li><a href="index.html" class="hover:text-white">Inicio</a></li>
+          <li><a href="servicios.html" class="hover:text-white">Servicios</a></li>
+          <li><a href="nosotros.html" class="hover:text-white">Nosotros</a></li>
+          <li><a href="index.html#planes" class="hover:text-white">Planes</a></li>
+          <li><a href="contacto.html" class="hover:text-white">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Contacto</h4>
+        <ul class="space-y-3 text-sm text-gray-400">
+          <li class="flex items-center gap-2">
+            <i data-lucide="mail" class="w-4 h-4 text-blue-400"></i>
+            <a href="mailto:cbastias99@gmail.com" class="hover:text-white">cbastias99@gmail.com</a>
+          </li>
+          <li class="flex items-center gap-2">
+            <i data-lucide="map-pin" class="w-4 h-4 text-blue-400"></i>
+            Chile
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="border-t border-gray-800 mt-10 pt-6 flex flex-col sm:flex-row justify-between gap-3 text-gray-500 text-sm">
+      <span>© 2026 MiGestorSocial. Todos los derechos reservados.</span>
+      <span>Automatización digital hecha en Chile 🇨🇱</span>
+    </div>
+
+  </div>
+</footer>
+
+
+<script>
+  lucide.createIcons();
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+</script>
+
+</body>
+</html>

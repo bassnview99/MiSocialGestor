@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contacto | Mi Gestor Social</title>
+  <meta name="description" content="Contáctanos y cuéntanos qué necesitas automatizar. Te respondemos a la brevedad.">
+
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff', 100: '#dbeafe', 400: '#60a5fa', 500: '#3b82f6',
+              600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a'
+            },
+            dark: { bg: '#080c14', card: '#101722', border: '#202938', muted: '#344054' }
+          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #080c14; color: #f3f4f6; }
+    .glass { background: rgba(16, 23, 34, .75); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.07); }
+    .card { background: rgba(16, 23, 34, .65); border: 1px solid rgba(255,255,255,.06); transition: .3s ease; }
+    .gradient-text { background: linear-gradient(135deg,#60a5fa,#a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .glow { box-shadow: 0 0 80px rgba(37,99,235,.15); }
+    input, select, textarea { color-scheme: dark; }
+  </style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-800/50">
+
+  <div class="max-w-7xl mx-auto px-5 h-20 flex items-center justify-between">
+
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="assets/img/logo-icon.png" alt="Logo Mi Gestor Social" class="w-11 h-11 object-contain">
+      <div>
+        <span class="font-bold text-xl text-white">MiGestor<span class="gradient-text">Social</span></span>
+        <div class="text-[10px] text-gray-500 uppercase tracking-widest">Digital Automation</div>
+      </div>
+    </a>
+
+    <nav class="hidden lg:flex gap-7 text-sm text-gray-300">
+      <a href="index.html#funciones" class="hover:text-white">Funciones</a>
+      <a href="servicios.html" class="hover:text-white">Servicios</a>
+      <a href="index.html#planes" class="hover:text-white">Planes</a>
+      <a href="nosotros.html" class="hover:text-white">Nosotros</a>
+      <a href="contacto.html" class="text-white">Contacto</a>
+    </nav>
+
+    <a href="contacto.html" class="hidden sm:flex bg-blue-600 hover:bg-blue-500 px-5 py-2.5 rounded-lg font-semibold text-sm">
+      Comenzar
+    </a>
+
+    <button id="menuBtn" class="lg:hidden">
+      <i data-lucide="menu"></i>
+    </button>
+
+  </div>
+
+  <div id="mobileMenu" class="hidden lg:hidden px-5 pb-5 space-y-3 bg-[#0b111b]">
+    <a href="index.html#funciones" class="block py-2">Funciones</a>
+    <a href="servicios.html" class="block py-2">Servicios</a>
+    <a href="index.html#planes" class="block py-2">Planes</a>
+    <a href="nosotros.html" class="block py-2">Nosotros</a>
+    <a href="contacto.html" class="block py-2">Contacto</a>
+  </div>
+
+</header>
+
+
+<main class="pt-20">
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="relative overflow-hidden py-20">
+
+  <div class="absolute w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[140px] top-0 left-1/2 -translate-x-1/2"></div>
+
+  <div class="max-w-4xl mx-auto px-5 text-center relative">
+
+    <span class="text-blue-400 uppercase text-sm tracking-widest">Contacto</span>
+
+    <h1 class="text-4xl md:text-6xl font-extrabold mt-3">
+      Hablemos de tu <span class="gradient-text">automatización</span>
+    </h1>
+
+    <p class="text-gray-400 text-lg mt-6 max-w-2xl mx-auto">
+      Cuéntanos qué necesitas y te responderemos a la brevedad a través del
+      correo que nos indiques. Sin compromiso.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     FORM + INFO
+========================================================= -->
+
+<section class="pb-24">
+
+  <div class="max-w-6xl mx-auto px-5 grid lg:grid-cols-5 gap-10">
+
+    <!-- INFO SIDEBAR -->
+    <div class="lg:col-span-2 space-y-6">
+
+      <div class="glass rounded-2xl p-7">
+
+        <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-4">
+          <i data-lucide="mail"></i>
+        </div>
+
+        <h3 class="font-bold text-lg">Correo</h3>
+        <p class="text-gray-400 text-sm mt-2">Escríbenos directamente:</p>
+        <a href="mailto:cbastias99@gmail.com" class="text-blue-400 text-sm font-semibold mt-1 inline-block hover:underline">
+          cbastias99@gmail.com
+        </a>
+
+      </div>
+
+      <div class="glass rounded-2xl p-7">
+
+        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-4">
+          <i data-lucide="clock"></i>
+        </div>
+
+        <h3 class="font-bold text-lg">Tiempo de respuesta</h3>
+        <p class="text-gray-400 text-sm mt-2">
+          Respondemos la mayoría de los mensajes dentro de 24-48 horas hábiles.
+        </p>
+
+      </div>
+
+      <div class="glass rounded-2xl p-7">
+
+        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-4">
+          <i data-lucide="map-pin"></i>
+        </div>
+
+        <h3 class="font-bold text-lg">Ubicación</h3>
+        <p class="text-gray-400 text-sm mt-2">
+          Chile — Atención remota para clientes en toda Latinoamérica.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- FORM -->
+    <div class="lg:col-span-3">
+
+      <div class="glass rounded-2xl p-7 md:p-10 glow">
+
+        <form id="contactForm" class="space-y-5">
+
+          <!-- Web3Forms access key: reemplaza este valor por tu propia clave -->
+          <input type="hidden" name="access_key" value="REEMPLAZA_CON_TU_ACCESS_KEY">
+          <input type="hidden" name="subject" value="Nuevo contacto desde Mi Gestor Social">
+          <input type="hidden" name="from_name" value="Sitio web Mi Gestor Social">
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none">
+
+          <div id="planNotice" class="hidden bg-blue-500/10 border border-blue-500/30 text-blue-300 text-sm rounded-xl px-4 py-3"></div>
+
+          <div class="grid md:grid-cols-2 gap-5">
+
+            <label class="block">
+              <span class="text-sm text-gray-400">Nombre completo *</span>
+              <input
+                type="text" name="nombre" required
+                class="w-full mt-2 bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500"
+                placeholder="Tu nombre"
+              >
+            </label>
+
+            <label class="block">
+              <span class="text-sm text-gray-400">Correo electrónico *</span>
+              <input
+                type="email" name="email" required
+                class="w-full mt-2 bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500"
+                placeholder="tucorreo@ejemplo.com"
+              >
+            </label>
+
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-5">
+
+            <label class="block">
+              <span class="text-sm text-gray-400">Teléfono (opcional)</span>
+              <input
+                type="tel" name="telefono"
+                class="w-full mt-2 bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500"
+                placeholder="+56 9 1234 5678"
+              >
+            </label>
+
+            <label class="block">
+              <span class="text-sm text-gray-400">Servicio de interés</span>
+              <select
+                name="servicio" id="servicioSelect"
+                class="w-full mt-2 bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500"
+              >
+                <option>Automatización de redes sociales</option>
+                <option>Monitoreo de información</option>
+                <option>IA para atención y contenido</option>
+                <option>Producción de contenido</option>
+                <option>Dashboard / métricas</option>
+                <option>Otro / no estoy seguro</option>
+              </select>
+            </label>
+
+          </div>
+
+          <label class="block">
+            <span class="text-sm text-gray-400">Mensaje *</span>
+            <textarea
+              name="mensaje" required rows="5"
+              class="w-full mt-2 bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500"
+              placeholder="Cuéntanos qué necesitas automatizar u organizar…"
+            ></textarea>
+          </label>
+
+          <button
+            type="submit" id="submitBtn"
+            class="w-full py-4 bg-blue-600 hover:bg-blue-500 rounded-xl font-bold transition flex items-center justify-center gap-2"
+          >
+            <span id="submitText">Enviar mensaje</span>
+            <i data-lucide="send" class="w-4 h-4"></i>
+          </button>
+
+          <p class="text-center text-xs text-gray-500">
+            Al enviar aceptas que usemos estos datos únicamente para responder tu consulta.
+          </p>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="border-t border-gray-800 py-14">
+
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="grid md:grid-cols-4 gap-10">
+
+      <div class="md:col-span-2">
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="assets/img/logo-icon.png" alt="Logo Mi Gestor Social" class="w-10 h-10 object-contain">
+          <div class="font-bold text-xl">MiGestor<span class="gradient-text">Social</span></div>
+        </a>
+        <p class="text-gray-500 text-sm mt-4 max-w-sm">
+          Automatización digital para negocios y creadores.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Navegación</h4>
+        <ul class="space-y-3 text-sm text-gray-400">
+          <li><a href="index.html" class="hover:text-white">Inicio</a></li>
+          <li><a href="servicios.html" class="hover:text-white">Servicios</a></li>
+          <li><a href="nosotros.html" class="hover:text-white">Nosotros</a></li>
+          <li><a href="index.html#planes" class="hover:text-white">Planes</a></li>
+          <li><a href="contacto.html" class="hover:text-white">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Contacto</h4>
+        <ul class="space-y-3 text-sm text-gray-400">
+          <li class="flex items-center gap-2">
+            <i data-lucide="mail" class="w-4 h-4 text-blue-400"></i>
+            <a href="mailto:cbastias99@gmail.com" class="hover:text-white">cbastias99@gmail.com</a>
+          </li>
+          <li class="flex items-center gap-2">
+            <i data-lucide="map-pin" class="w-4 h-4 text-blue-400"></i>
+            Chile
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="border-t border-gray-800 mt-10 pt-6 flex flex-col sm:flex-row justify-between gap-3 text-gray-500 text-sm">
+      <span>© 2026 MiGestorSocial. Todos los derechos reservados.</span>
+      <span>Automatización digital hecha en Chile 🇨🇱</span>
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- TOAST -->
+<div id="toast" class="fixed bottom-6 right-6 hidden bg-gray-900 border border-gray-700 rounded-xl px-5 py-4 shadow-2xl max-w-sm">
+  <div id="toastMessage" class="text-sm"></div>
+</div>
+
+
+<script>
+
+  lucide.createIcons();
+
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+  function showToast(message) {
+    const toast = document.getElementById('toast');
+    document.getElementById('toastMessage').innerText = message;
+    toast.classList.remove('hidden');
+    setTimeout(() => toast.classList.add('hidden'), 5000);
+  }
+
+  // Prefill plan/estimate from query params (?plan=PRO or ?estimado=$39.990)
+  const params = new URLSearchParams(window.location.search);
+  const plan = params.get('plan');
+  const estimado = params.get('estimado');
+  if (plan || estimado) {
+    const notice = document.getElementById('planNotice');
+    notice.classList.remove('hidden');
+    notice.innerText = plan
+      ? `Estás consultando por el plan ${plan}. Cuéntanos más detalles en tu mensaje.`
+      : `Configuración estimada: ${estimado}. Cuéntanos más detalles en tu mensaje.`;
+    const mensajeField = document.querySelector('textarea[name="mensaje"]');
+    if (plan) mensajeField.value = `Hola, me interesa el plan ${plan}. `;
+    else if (estimado) mensajeField.value = `Hola, arme una configuración estimada de ${estimado} en el cotizador. `;
+  }
+
+  // Form submission via Web3Forms (no backend needed)
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const submitText = document.getElementById('submitText');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const accessKey = form.querySelector('[name="access_key"]').value;
+    if (!accessKey || accessKey === 'REEMPLAZA_CON_TU_ACCESS_KEY') {
+      showToast('⚠️ Falta configurar la Access Key de Web3Forms en contacto.html.');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitText.innerText = 'Enviando…';
+
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: json
+      });
+      const result = await response.json();
+
+      if (result.success) {
+        showToast('✅ ¡Mensaje enviado! Te responderemos pronto a tu correo.');
+        form.reset();
+      } else {
+        showToast('❌ No se pudo enviar. Intenta nuevamente o escríbenos a cbastias99@gmail.com');
+      }
+    } catch (err) {
+      showToast('❌ Error de conexión. Escríbenos directamente a cbastias99@gmail.com');
+    } finally {
+      submitBtn.disabled = false;
+      submitText.innerText = 'Enviar mensaje';
+    }
+  });
+
+</script>
+
+</body>
+</html>

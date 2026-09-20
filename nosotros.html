@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Nosotros | Mi Gestor Social</title>
+  <meta name="description" content="Conoce Mi Gestor Social: quiénes somos, nuestra misión y nuestro compromiso con la automatización digital responsable.">
+
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff', 100: '#dbeafe', 400: '#60a5fa', 500: '#3b82f6',
+              600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a'
+            },
+            dark: { bg: '#080c14', card: '#101722', border: '#202938', muted: '#344054' }
+          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #080c14; color: #f3f4f6; }
+    .glass { background: rgba(16, 23, 34, .75); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.07); }
+    .card { background: rgba(16, 23, 34, .65); border: 1px solid rgba(255,255,255,.06); transition: .3s ease; }
+    .gradient-text { background: linear-gradient(135deg,#60a5fa,#a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  </style>
+</head>
+
+<body>
+
+<header class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-800/50">
+
+  <div class="max-w-7xl mx-auto px-5 h-20 flex items-center justify-between">
+
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="assets/img/logo-icon.png" alt="Logo Mi Gestor Social" class="w-11 h-11 object-contain">
+      <div>
+        <span class="font-bold text-xl text-white">MiGestor<span class="gradient-text">Social</span></span>
+        <div class="text-[10px] text-gray-500 uppercase tracking-widest">Digital Automation</div>
+      </div>
+    </a>
+
+    <nav class="hidden lg:flex gap-7 text-sm text-gray-300">
+      <a href="index.html#funciones" class="hover:text-white">Funciones</a>
+      <a href="servicios.html" class="hover:text-white">Servicios</a>
+      <a href="index.html#planes" class="hover:text-white">Planes</a>
+      <a href="nosotros.html" class="text-white">Nosotros</a>
+      <a href="contacto.html" class="hover:text-white">Contacto</a>
+    </nav>
+
+    <a href="contacto.html" class="hidden sm:flex bg-blue-600 hover:bg-blue-500 px-5 py-2.5 rounded-lg font-semibold text-sm">
+      Comenzar
+    </a>
+
+    <button id="menuBtn" class="lg:hidden">
+      <i data-lucide="menu"></i>
+    </button>
+
+  </div>
+
+  <div id="mobileMenu" class="hidden lg:hidden px-5 pb-5 space-y-3 bg-[#0b111b]">
+    <a href="index.html#funciones" class="block py-2">Funciones</a>
+    <a href="servicios.html" class="block py-2">Servicios</a>
+    <a href="index.html#planes" class="block py-2">Planes</a>
+    <a href="nosotros.html" class="block py-2">Nosotros</a>
+    <a href="contacto.html" class="block py-2">Contacto</a>
+  </div>
+
+</header>
+
+
+<main class="pt-20">
+
+<section class="relative overflow-hidden py-24">
+
+  <div class="absolute w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[140px] top-0 left-1/2 -translate-x-1/2"></div>
+
+  <div class="max-w-4xl mx-auto px-5 text-center relative">
+    <span class="text-blue-400 uppercase text-sm tracking-widest">Nosotros</span>
+    <h1 class="text-4xl md:text-6xl font-extrabold mt-3">
+      Automatización digital, <span class="gradient-text">con criterio</span>
+    </h1>
+    <p class="text-gray-400 text-lg mt-6 max-w-2xl mx-auto">
+      Somos Mi Gestor Social: ayudamos a negocios y creadores a ordenar su
+      presencia digital y a automatizar tareas repetitivas, sin perder el
+      control de sus canales ni de sus datos.
+    </p>
+  </div>
+
+</section>
+
+
+<section class="pb-20">
+  <div class="max-w-6xl mx-auto px-5 grid lg:grid-cols-2 gap-14 items-center">
+
+    <div>
+      <span class="text-blue-400 uppercase text-sm tracking-widest">Nuestra misión</span>
+      <h2 class="text-3xl md:text-4xl font-bold mt-3">
+        Que dediques tu tiempo a crear, no a repetir tareas
+      </h2>
+      <p class="text-gray-400 mt-5">
+        Nace de una necesidad real: negocios y creadores de contenido pierden
+        horas valiosas en tareas manuales —responder lo mismo una y otra vez,
+        armar calendarios en planillas, revisar precios de la competencia—
+        en lugar de enfocarse en su producto o su comunidad.
+      </p>
+      <p class="text-gray-400 mt-4">
+        Por eso construimos un ecosistema que organiza el contenido, conecta
+        tus canales y automatiza lo repetitivo, dejando las decisiones
+        importantes siempre en tus manos.
+      </p>
+    </div>
+
+    <div class="glass rounded-2xl p-8 space-y-6">
+
+      <div class="flex gap-4">
+        <div class="w-11 h-11 shrink-0 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center">
+          <i data-lucide="target"></i>
+        </div>
+        <div>
+          <h3 class="font-bold">Enfoque práctico</h3>
+          <p class="text-gray-400 text-sm mt-1">Automatizamos lo que realmente ahorra tiempo, no lo que suena bien en una demo.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="w-11 h-11 shrink-0 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center">
+          <i data-lucide="shield-check"></i>
+        </div>
+        <div>
+          <h3 class="font-bold">Uso responsable</h3>
+          <p class="text-gray-400 text-sm mt-1">Trabajamos solo con integraciones autorizadas y datos que el cliente controla.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="w-11 h-11 shrink-0 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+          <i data-lucide="handshake"></i>
+        </div>
+        <div>
+          <h3 class="font-bold">Acompañamiento cercano</h3>
+          <p class="text-gray-400 text-sm mt-1">Configuramos el sistema contigo y ajustamos las automatizaciones a tu negocio real.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- USO RESPONSABLE -->
+<section class="py-24 bg-[#0b111b] border-y border-gray-800">
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="text-center max-w-3xl mx-auto">
+      <span class="text-emerald-400 uppercase text-sm tracking-widest">Nuestro compromiso</span>
+      <h2 class="text-4xl font-bold mt-3">Automatización transparente</h2>
+      <p class="text-gray-400 mt-5">
+        Diseñamos el servicio para trabajar con contenido, cuentas y datos de
+        forma autorizada, evitando prácticas destinadas a inflar
+        artificialmente las métricas.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-7 mt-14">
+
+      <div class="glass rounded-2xl p-8 border-l-4 border-emerald-500">
+        <h3 class="text-xl font-bold">Sí hacemos</h3>
+        <ul class="mt-6 space-y-4 text-gray-300">
+          <li>✓ Publicación mediante integraciones autorizadas</li>
+          <li>✓ Contenido original o con derechos adecuados</li>
+          <li>✓ Monitoreo de información pública permitido</li>
+          <li>✓ Automatización de tareas propias</li>
+          <li>✓ Análisis de métricas de cuentas conectadas</li>
+        </ul>
+      </div>
+
+      <div class="glass rounded-2xl p-8 border-l-4 border-red-500">
+        <h3 class="text-xl font-bold">No hacemos</h3>
+        <ul class="mt-6 space-y-4 text-gray-300">
+          <li>✕ Seguidores falsos</li>
+          <li>✕ Likes o reproducciones artificiales</li>
+          <li>✕ Cuentas falsas masivas</li>
+          <li>✕ Evasión de bloqueos o límites</li>
+          <li>✕ Acceso a cuentas sin autorización</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section class="py-20">
+  <div class="max-w-4xl mx-auto px-5 text-center">
+    <h2 class="text-3xl md:text-5xl font-extrabold">
+      ¿Conversamos?
+    </h2>
+    <p class="text-gray-400 max-w-2xl mx-auto mt-5 text-lg">
+      Nos encantaría conocer tu negocio y ver en qué podemos ayudarte.
+    </p>
+    <a href="contacto.html" class="inline-flex mt-8 px-8 py-4 bg-blue-600 hover:bg-blue-500 rounded-xl font-bold">
+      Escríbenos
+    </a>
+  </div>
+</section>
+
+</main>
+
+
+<footer class="border-t border-gray-800 py-14">
+  <div class="max-w-7xl mx-auto px-5">
+
+    <div class="grid md:grid-cols-4 gap-10">
+
+      <div class="md:col-span-2">
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="assets/img/logo-icon.png" alt="Logo Mi Gestor Social" class="w-10 h-10 object-contain">
+          <div class="font-bold text-xl">MiGestor<span class="gradient-text">Social</span></div>
+        </a>
+        <p class="text-gray-500 text-sm mt-4 max-w-sm">
+          Automatización digital para negocios y creadores.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Navegación</h4>
+        <ul class="space-y-3 text-sm text-gray-400">
+          <li><a href="index.html" class="hover:text-white">Inicio</a></li>
+          <li><a href="servicios.html" class="hover:text-white">Servicios</a></li>
+          <li><a href="nosotros.html" class="hover:text-white">Nosotros</a></li>
+          <li><a href="index.html#planes" class="hover:text-white">Planes</a></li>
+          <li><a href="contacto.html" class="hover:text-white">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Contacto</h4>
+        <ul class="space-y-3 text-sm text-gray-400">
+          <li class="flex items-center gap-2">
+            <i data-lucide="mail" class="w-4 h-4 text-blue-400"></i>
+            <a href="mailto:cbastias99@gmail.com" class="hover:text-white">cbastias99@gmail.com</a>
+          </li>
+          <li class="flex items-center gap-2">
+            <i data-lucide="map-pin" class="w-4 h-4 text-blue-400"></i>
+            Chile
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="border-t border-gray-800 mt-10 pt-6 flex flex-col sm:flex-row justify-between gap-3 text-gray-500 text-sm">
+      <span>© 2026 MiGestorSocial. Todos los derechos reservados.</span>
+      <span>Automatización digital hecha en Chile 🇨🇱</span>
+    </div>
+
+  </div>
+</footer>
+
+
+<script>
+  lucide.createIcons();
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+</script>
+
+</body>
+</html>

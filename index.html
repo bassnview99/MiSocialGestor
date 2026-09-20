@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Mi Gestor Social | Automatización y Gestión Digital</title>
+  <meta name="description" content="Automatiza tareas repetitivas de Instagram, TikTok, YouTube y otros canales, organiza tu contenido y recibe alertas sin contratar un social manager a tiempo completo.">
+
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -97,11 +103,13 @@
 
   <div class="max-w-7xl mx-auto px-5 h-20 flex items-center justify-between">
 
-    <a href="#" class="flex items-center gap-3">
+    <a href="index.html" class="flex items-center gap-3">
 
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center">
-        <i data-lucide="cpu" class="w-6 h-6"></i>
-      </div>
+      <img
+        src="assets/img/logo-icon.png"
+        alt="Logo Mi Gestor Social"
+        class="w-11 h-11 object-contain"
+      >
 
       <div>
         <span class="font-bold text-xl text-white">
@@ -118,15 +126,15 @@
     <nav class="hidden lg:flex gap-7 text-sm text-gray-300">
 
       <a href="#funciones" class="hover:text-white">Funciones</a>
-      <a href="#contenido" class="hover:text-white">Contenido</a>
-      <a href="#automatizaciones" class="hover:text-white">Automatización</a>
-      <a href="#dashboard" class="hover:text-white">Dashboard</a>
+      <a href="servicios.html" class="hover:text-white">Servicios</a>
       <a href="#planes" class="hover:text-white">Planes</a>
+      <a href="nosotros.html" class="hover:text-white">Nosotros</a>
+      <a href="contacto.html" class="hover:text-white">Contacto</a>
 
     </nav>
 
     <a
-      href="#cotizador"
+      href="contacto.html"
       class="hidden sm:flex bg-blue-600 hover:bg-blue-500 px-5 py-2.5 rounded-lg font-semibold text-sm"
     >
       Comenzar
@@ -141,10 +149,10 @@
   <div id="mobileMenu" class="hidden lg:hidden px-5 pb-5 space-y-3 bg-[#0b111b]">
 
     <a href="#funciones" class="block py-2">Funciones</a>
-    <a href="#contenido" class="block py-2">Contenido</a>
-    <a href="#automatizaciones" class="block py-2">Automatización</a>
-    <a href="#dashboard" class="block py-2">Dashboard</a>
+    <a href="servicios.html" class="block py-2">Servicios</a>
     <a href="#planes" class="block py-2">Planes</a>
+    <a href="nosotros.html" class="block py-2">Nosotros</a>
+    <a href="contacto.html" class="block py-2">Contacto</a>
 
   </div>
 
@@ -1484,29 +1492,80 @@
      FOOTER
 ========================================================= -->
 
-<footer class="border-t border-gray-800 py-10">
+<footer class="border-t border-gray-800 py-14">
 
   <div class="max-w-7xl mx-auto px-5">
 
-    <div class="flex flex-col md:flex-row justify-between gap-7">
+    <div class="grid md:grid-cols-4 gap-10">
 
-      <div>
+      <div class="md:col-span-2">
 
-        <div class="font-bold text-xl">
-          MiGestor<span class="gradient-text">Social</span>
-        </div>
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="assets/img/logo-icon.png" alt="Logo Mi Gestor Social" class="w-10 h-10 object-contain">
+          <div class="font-bold text-xl">
+            MiGestor<span class="gradient-text">Social</span>
+          </div>
+        </a>
 
-        <p class="text-gray-500 text-sm mt-2">
-          Automatización digital para negocios y creadores.
+        <p class="text-gray-500 text-sm mt-4 max-w-sm">
+          Automatización digital para negocios y creadores. Organizamos tu
+          contenido, tus canales y tus procesos para que dediques tu tiempo
+          a lo que realmente importa.
         </p>
 
       </div>
 
-      <div class="text-gray-500 text-sm">
+      <div>
 
-        © 2026 MiGestorSocial
+        <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+          Navegación
+        </h4>
+
+        <ul class="space-y-3 text-sm text-gray-400">
+          <li><a href="index.html" class="hover:text-white">Inicio</a></li>
+          <li><a href="servicios.html" class="hover:text-white">Servicios</a></li>
+          <li><a href="nosotros.html" class="hover:text-white">Nosotros</a></li>
+          <li><a href="index.html#planes" class="hover:text-white">Planes</a></li>
+          <li><a href="contacto.html" class="hover:text-white">Contacto</a></li>
+        </ul>
 
       </div>
+
+      <div>
+
+        <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+          Contacto
+        </h4>
+
+        <ul class="space-y-3 text-sm text-gray-400">
+
+          <li class="flex items-center gap-2">
+            <i data-lucide="mail" class="w-4 h-4 text-blue-400"></i>
+            <a href="mailto:cbastias99@gmail.com" class="hover:text-white">cbastias99@gmail.com</a>
+          </li>
+
+          <li class="flex items-center gap-2">
+            <i data-lucide="map-pin" class="w-4 h-4 text-blue-400"></i>
+            Chile
+          </li>
+
+        </ul>
+
+        <a
+          href="contacto.html"
+          class="inline-flex mt-5 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 rounded-lg text-sm font-semibold"
+        >
+          Escríbenos
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="border-t border-gray-800 mt-10 pt-6 flex flex-col sm:flex-row justify-between gap-3 text-gray-500 text-sm">
+
+      <span>© 2026 MiGestorSocial. Todos los derechos reservados.</span>
+      <span>Automatización digital hecha en Chile 🇨🇱</span>
 
     </div>
 
@@ -1688,10 +1747,13 @@
       document.getElementById('price').innerText;
 
     showToast(
-      'Configuración estimada: ' +
-      price +
-      '. Conecta aquí tu formulario de contacto.'
+      'Configuración estimada: ' + price + '. Te llevamos al formulario de contacto…'
     );
+
+    setTimeout(() => {
+      window.location.href =
+        'contacto.html?estimado=' + encodeURIComponent(price);
+    }, 1200);
 
   }
 
